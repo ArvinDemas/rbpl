@@ -32,7 +32,7 @@
             <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About Us</a>
             <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Booking</a>
             <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact</a> 
-            <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="#">
+            <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="login.php">
                 <img src="img/Vector.png" alt="User Icon" class="w-6 h-6 rounded-full">
             </a>
             </nav>
@@ -355,7 +355,7 @@
         <div class="flex-1 flex flex-col gap-4">
           <span class="text-base font-medium opacity-50">Proses Servis</span>
           <h2 class="text-4xl md:text-6xl font-medium leading-tight">
-            Apa yang bisa Anda harapkan dari <span class="text-rose-600">Chung Bike Shop</span>
+            Apa yang bisa Anda harapkan dari <span class="text-rose-600">Chung BikeShop</span>
           </h2>
         </div>
         <p class="w-full lg:w-80 text-lg opacity-70 leading-relaxed">
@@ -385,18 +385,18 @@
   
           <!-- Step 3 -->
           <div class="pl-6">
-            <h3 class="text-2xl md:text-3xl font-semibold">Vehicle Check-In <span class="font-medium">& Repairs</span></h3>
+            <h3 class="text-2xl md:text-3xl font-semibold">check-in <span class="font-medium">& Perbaikan kendaraan</span></h3>
             <p class="text-base font-medium opacity-70 mt-2">
-              Quick and easy vehicle check-in. Once we assess your vehicle, we’ll confirm the work needed and get started right away to get you back on the road.
+              
+          Pemeriksaan kendaraan yang cepat dan mudah. ​​Setelah kami memeriksa kendaraan Anda, kami akan mengonfirmasi servis yang dibutuhkan dan segera memulai agar Anda dapat kembali berkendara.
             </p>
           </div>
   
           <!-- Step 4 -->
           <div class="pl-6">
-            <h3 class="text-2xl md:text-3xl font-semibold">Drive Away Confidently</h3>
+            <h3 class="text-2xl md:text-3xl font-semibold">Berkendara dengan percaya diri</h3>
             <p class="text-base font-medium opacity-70 mt-2">
-              Drive away with confidence. After our expert repairs, your vehicle is ready to hit the road safely and smoothly.
-            </p>
+            Berkendara dengan percaya diri. Setelah perbaikan oleh ahli kami, kendaraan Anda siap untuk dikendarai dengan aman dan lancar.            </p>
           </div>
         </div>
   
@@ -415,13 +415,13 @@
       
       <!-- Heading -->
       <div class="flex flex-col gap-4">
-        <span class="text-lg font-medium opacity-50">Testimonials</span>
+        <span class="text-lg font-medium opacity-50">Testimoni</span>
         <div class="flex flex-col lg:flex-row items-start gap-8">
           <h2 class="text-4xl md:text-6xl font-medium leading-tight flex-1">
-            What Drivers Are Saying About <span class="text-rose-600">Us</span>
+            Apa kata Customer tentang Chung  <span class="text-rose-600">Bikeshop</span>
           </h2>
           <p class="text-base opacity-70 max-w-xl">
-            Read what our satisfied customers have to say about our products and services
+          Baca apa yang dikatakan pelanggan kami yang puas tentang produk dan layanan kami
           </p>
         </div>
       </div>
@@ -434,7 +434,7 @@
           <img src="https://placehold.co/116x116" alt="Albert Flores" class="w-28 h-28 rounded-md">
           <h3 class="text-2xl font-medium">Albert Flores</h3>
           <p class="text-base opacity-70 leading-relaxed">
-            For years, I've trusted my motorcycle to Chung Bike Shop, and they've never let me down...
+          Selama bertahun-tahun, saya mempercayakan sepeda motor saya kepada Chung Bike Shop, dan mereka tidak pernah mengecewakan saya...
           </p>
           <div class="flex gap-1 mt-2">
             <div class="w-4 h-4 bg-rose-600 rounded-full"></div>
@@ -450,7 +450,7 @@
           <img src="https://placehold.co/116x116" alt="Robert Fox" class="w-28 h-28 rounded-md">
           <h3 class="text-2xl font-medium">Robert Fox</h3>
           <p class="text-base opacity-70 leading-relaxed">
-            When I faced a sudden issue with my motorcycle, Chung Bike Shop managed to fit me in for an appointment...
+          Ketika saya tiba-tiba menghadapi masalah dengan sepeda motor saya, Chung Bike Shop berhasil mengatur janji temu bagi saya...
           </p>
           <div class="flex gap-1 mt-2">
             <div class="w-4 h-4 bg-rose-600 rounded-full"></div>
@@ -466,7 +466,7 @@
           <img src="https://placehold.co/116x116" alt="Eleanor Pena" class="w-28 h-28 rounded-md">
           <h3 class="text-2xl font-medium">Eleanor Pena</h3>
           <p class="text-base opacity-70 leading-relaxed">
-            I encountered an urgent problem with my vehicle and was fortunate to secure a same-day appointment...
+          Saya mengalami masalah mendesak dengan kendaraan saya dan beruntung bisa mendapatkan janji temu di hari yang sama...
           </p>
           <div class="flex gap-1 mt-2">
             <div class="w-4 h-4 bg-rose-600 rounded-full"></div>
@@ -494,9 +494,9 @@
   
       <!-- Header -->
       <div class="flex flex-col gap-4">
-        <span class="text-lg font-medium opacity-50">Coverage Area</span>
+        <span class="text-lg font-medium opacity-50">Peta Area</span>
         <h2 class="text-4xl md:text-5xl font-medium leading-tight">
-          <span class="text-rose-600">Our Location</span>
+          <span class="text-rose-600">Lokasi </span>
           <span> Quality, Convenience, and Expertise</span>
         </h2>
         <p class="text-base opacity-70 max-w-2xl">
