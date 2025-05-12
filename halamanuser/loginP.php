@@ -14,10 +14,10 @@ include "koneksi.php";
             if ($row["username"] == $uname && $row["password"] == $password) {
                 $_SESSION["username"] = $row["username"];
                 $_SESSION["password"] = $row["password"];
-                header("location:homepage.php");
+                header("location:home.php");
                 exit;
             }else {
-                header("location:login.php?error=");
+                header("location:index.php?error=");
                 exit;  
              }
             }
