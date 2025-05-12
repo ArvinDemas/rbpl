@@ -497,10 +497,10 @@
         <span class="text-lg font-medium opacity-50">Peta Area</span>
         <h2 class="text-4xl md:text-5xl font-medium leading-tight">
           <span class="text-rose-600">Lokasi </span>
-          <span> Quality, Convenience, and Expertise</span>
+          <span> Kualitas, Kenyamanan, dan Keahlian</span>
         </h2>
         <p class="text-base opacity-70 max-w-2xl">
-          Whether you’re near or far, our expert services are just around the corner.
+        Baik Anda dekat atau jauh, layanan ahli kami ada di dekat Anda.
         </p>
       </div>
   
@@ -539,7 +539,7 @@
   
         <!-- Jam Operasional -->
         <div class="flex flex-col gap-3">
-          <h3 class="text-2xl font-medium">Opening Hours</h3>
+          <h3 class="text-2xl font-medium">Jam Operasional</h3>
           <p class="text-lg opacity-50">Mon–Fri: 08.00 – 20.00</p>
           <p class="text-lg opacity-50">Sat–Sun: 10.00 – 16.00</p>
         </div>
