@@ -1,0 +1,361 @@
+<html>
+ <head>
+  <title>
+   ChungBike Shop
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <script>
+  const counters = document.querySelectorAll('.counter');
+  let triggered = false;
+
+/**
+ * Animates the counters on the page by incrementing their values until they reach the target value.
+ * Each counter is identified by the 'counter' class and must have a 'data-target' attribute specifying the target number.
+ * The animation is triggered only once when the specified section comes into view.
+ */
+
+/**
+ * Animates the counters on the page by incrementing their values until they reach the target value.
+ * Each counter is identified by the 'counter' class and must have a 'data-target' attribute specifying the target number.
+ * The animation is triggered only once when the specified section comes into view.
+ */
+  function animateCounters() {
+    if (triggered) return;
+    triggered = true;
+
+    counters.forEach(counter => {
+      /**
+       * Updates the counter value by incrementing it until it reaches the target value.
+       * The increment value is calculated as the target value divided by 60.
+       * If the counter value is still less than the target value, the function will
+       * call itself using requestAnimationFrame to update the value again.
+       * When the counter value reaches the target value, the function will stop
+       * calling itself and set the counter value to the target value with localeString()
+       * formatting.
+       */
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+
+        const increment = target / 60;
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          requestAnimationFrame(updateCount);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+
+      updateCount();
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) animateCounters();
+  }, { threshold: 0.5 });
+
+  const statSection = document.querySelector('section.bg-[#DB323E]');
+  if (statSection) observer.observe(statSection);
+</script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
+    <!-- Hero Section -->
+<section class="relative w-full bg-cover bg-center" style="background-image: url('https://placehold.co/1440x4523')">
+  <!-- Overlay dengan background semi-transparan -->
+  <div class="bg-black/50 bg-cover bg-center py-20 px-8" style="background-image: url('https://placehold.co/1440x456')">
+    
+    <!-- Navigation -->
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between gap-8 relative mb-24">
+      <!-- Logo -->
+      <img src="https://placehold.co/80x100" alt="Logo" class="w-20 h-24" />
+
+      <!-- Navigation Links -->
+      <div class="flex-1 flex items-center gap-8">
+        <nav class="flex items-center gap-8 font-semibold text-white text-base">
+          <a href="#">Home</a>
+          <a href="#">Appointment</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Button -->
+      <button class="bg-[#DB323E] px-8 py-3 rounded-lg flex items-center justify-center gap-2">
+        <div class="w-6 h-6 bg-white rounded-sm"></div>
+      </button>
+    </div>
+
+    <!-- Hero Text -->
+    <div class="max-w-screen-xl mx-auto text-center">
+      <h1 class="text-4xl md:text-6xl font-semibold leading-tight text-white">
+        Driven by <span class="text-[#DB323E] italic">Passion</span>, Powered by <span class="text-[#DB323E] italic">Expertise</span>
+      </h1>
+    </div>
+  </div>
+</section>
+
+<!-- Journey Section -->
+<section class="bg-[#292929] py-20 px-4 overflow-hidden">
+  <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center gap-6">
+    
+    <!-- Text Content -->
+    <div class="w-full max-w-lg flex flex-col gap-8">
+      <div class="flex flex-col gap-4 relative">
+        <h3 class="text-[#DB323E] text-2xl font-medium leading-8">The Chung Bike Shop Journey</h3>
+        <h2 class="text-white text-4xl md:text-5xl font-semibold leading-tight">
+          From <span class="italic">Passion</span> to <span class="italic">Precision</span>
+        </h2>
+      </div>
+      <p class="text-white text-opacity-50 text-base leading-relaxed">
+        At Chung Bike Shop, our journey began with a shared passion for cars and a drive to make automotive care easier, more accessible, and more reliable...
+      </p>
+    </div>
+
+    <!-- Image Section -->
+    <div class="relative w-full max-w-2xl h-[634px]">
+      <img src="https://placehold.co/759x634" class="absolute left-14 top-0 rounded-xl w-[759px] h-[634px] object-cover" />
+      <img src="https://placehold.co/355x267" class="absolute left-3 top-[397px] rounded-xl border border-white w-[355px] h-[267px] object-cover" />
+    </div>
+
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="bg-[#222222] py-20 px-4 flex flex-col items-center gap-12">
+  <div class="max-w-screen-xl w-full flex flex-col gap-2">
+    <h2 class="text-white text-4xl md:text-5xl font-semibold">Why Choose Chung Bike Shop?</h2>
+    <p class="text-[#DB323E] text-xl font-medium">Your Trusted Partner for Quality Automotive Care</p>
+  </div>
+
+  <div class="max-w-screen-xl w-full flex flex-col md:flex-row gap-6">
+    
+    <!-- Card 1 -->
+    <div class="flex-1 bg-[#292929] rounded-2xl p-8 flex flex-col gap-6">
+      <div class="w-16 h-16 bg-[#DB323E] rounded-lg flex items-center justify-center">
+        <!-- Icon placeholder -->
+        <div class="w-10 h-6 bg-white"></div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <h4 class="text-white text-xl font-medium">Certified and experienced technicians.</h4>
+        <p class="text-white text-opacity-50 text-sm leading-relaxed">
+          Our certified and experienced technicians are committed to delivering top-notch service with precision and care.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="flex-1 bg-[#292929] rounded-2xl p-8 flex flex-col gap-6">
+      <div class="w-16 h-16 bg-[#DB323E] rounded-lg flex items-center justify-center">
+        <!-- Icon placeholder -->
+        <div class="w-10 h-10 bg-white"></div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <h4 class="text-white text-xl font-medium">Transparent pricing with no hidden charges.</h4>
+        <p class="text-white text-opacity-50 text-sm leading-relaxed">
+          At Chung Bike Shop, we believe in honest, upfront pricing with no hidden fees.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="bg-[#DB323E] py-10 px-4">
+  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 text-white">
+
+    <!-- Stat Box -->
+    <div class="flex-1 flex flex-col items-center gap-2 text-center">
+      <div class="text-6xl font-semibold leading-[72px] counter" data-target="15">0</div>
+      <div class="text-lg opacity-50 font-medium">Years Experience</div>
+    </div>
+
+    <div class="w-px h-20 bg-white hidden md:block"></div>
+
+    <div class="flex-1 flex flex-col items-center gap-2 text-center">
+      <div class="text-6xl font-semibold leading-[72px] counter" data-target="20">0</div>
+      <div class="text-lg opacity-50 font-medium">Expert Technicians</div>
+    </div>
+
+    <div class="w-px h-20 bg-white hidden md:block"></div>
+
+    <div class="flex-1 flex flex-col items-center gap-2 text-center">
+      <div class="text-6xl font-semibold leading-[72px] counter" data-target="1200">0</div>
+      <div class="text-lg opacity-50 font-medium">Projects Completed</div>
+    </div>
+
+    <div class="w-px h-20 bg-white hidden md:block"></div>
+
+    <div class="flex-1 flex flex-col items-center gap-2 text-center">
+      <div class="text-6xl font-semibold leading-[72px] counter" data-target="100">0</div>
+      <div class="text-lg opacity-50 font-medium">Satisfaction Rate</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="bg-[#292929] py-28 px-8 flex flex-col items-center gap-20">
+  <!-- Heading -->
+  <div class="max-w-screen-xl w-full flex flex-col gap-4">
+    <h3 class="text-[#DB323E] text-xl md:text-2xl font-medium">Driven by Passion, United by Excellence</h3>
+    <div class="flex flex-col items-center text-center gap-6">
+      <h2 class="text-white text-3xl md:text-5xl font-semibold leading-tight">Meet Our Team: Experts Who Care</h2>
+      <p class="text-white text-base md:text-lg opacity-50 max-w-3xl">
+        At Chung Bike Shop, our team is the backbone of everything we do. From certified technicians to customer service professionals, each member is passionate about delivering the best automotive care. With years of experience, a commitment to ongoing training, and a dedication to customer satisfaction, our experts work together to ensure your vehicle receives the highest quality service.
+      </p>
+    </div>
+  </div>
+
+  <!-- Team Cards -->
+  <div class="max-w-screen-xl w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <!-- Card -->
+    <div class="relative flex flex-col items-center text-white gap-6">
+      <img src="https://placehold.co/276x296" alt="John Carter" class="rounded-xl w-full h-[296px] object-cover" />
+      <div class="flex flex-col items-center gap-1">
+        <h4 class="text-xl font-medium">John Carter</h4>
+        <p class="text-base opacity-80">Lead Technician</p>
+        <p class="text-sm opacity-50 text-center">With over 15 years of experience in automotive repair, John is the master behind many of our most complex projects.</p>
+      </div>
+      <!-- Social Icons Placeholder -->
+      <div class="absolute bottom-[-20px] flex gap-3">
+        <div class="w-10 h-10 bg-[#DB323E] rounded-lg flex justify-center items-center">
+          <div class="w-5 h-4 bg-white"></div>
+        </div>
+        <div class="w-10 h-10 bg-[#DB323E] rounded-lg flex justify-center items-center">
+          <div class="w-4 h-4 bg-white"></div>
+        </div>
+        <div class="w-10 h-10 bg-[#DB323E] rounded-lg flex justify-center items-center">
+          <div class="w-5 h-5 bg-white"></div>
+        </div>
+        <div class="w-10 h-10 bg-[#DB323E] rounded-lg flex justify-center items-center">
+          <div class="w-4 h-4 bg-white"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copy and adjust for other members -->
+    <div class="relative flex flex-col items-center text-white gap-6">
+      <img src="https://placehold.co/276x296" alt="Eva Lee" class="rounded-xl w-full h-[296px] object-cover" />
+      <div class="flex flex-col items-center gap-1">
+        <h4 class="text-xl font-medium">Eva Lee</h4>
+        <p class="text-base opacity-80">Customer Service Manager</p>
+        <p class="text-sm opacity-50 text-center">Eva ensures that every customer interaction is smooth and positive. With a background in customer relations and a genuine love for cars.</p>
+      </div>
+      <div class="absolute bottom-[-20px] flex gap-3">
+        <div class="w-10 h-10 bg-[#DB323E] rounded-lg flex justify-center items-center">
+          <div class="w-5 h-4 bg-white"></div>
+        </div>
+        <div class="w-10 h-10 bg-[#DB323E] rounded-lg flex justify-center items-center">
+          <div class="w-4 h-4 bg-white"></div>
+        </div>
+        <div class="w-10 h-10 bg-[#DB323E] rounded-lg flex justify-center items-center">
+          <div class="w-5 h-5 bg-white"></div>
+        </div>
+        <div class="w-10 h-10 bg-[#DB323E] rounded-lg flex justify-center items-center">
+          <div class="w-4 h-4 bg-white"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emily Davis -->
+    <div class="relative flex flex-col items-center text-white gap-6">
+      <img src="https://placehold.co/276x296" alt="Emily Davis" class="rounded-xl w-full h-[296px] object-cover" />
+      <div class="flex flex-col items-center gap-1">
+        <h4 class="text-xl font-medium">Emily Davis</h4>
+        <p class="text-base opacity-80">Quality Control Specialist</p>
+        <p class="text-sm opacity-50 text-center">Emily ensures that every vehicle that leaves our shop is in top condition. With a keen eye for detail, she oversees our quality control process.</p>
+      </div>
+      <div class="absolute bottom-[-20px] flex gap-3">
+        <!-- Same icons -->
+      </div>
+    </div>
+
+    <!-- David King -->
+    <div class="relative flex flex-col items-center text-white gap-6">
+      <img src="https://placehold.co/276x296" alt="David King" class="rounded-xl w-full h-[296px] object-cover" />
+      <div class="flex flex-col items-center gap-1">
+        <h4 class="text-xl font-medium">David King</h4>
+        <p class="text-base opacity-80">Head of Operation</p>
+        <p class="text-sm opacity-50 text-center">David oversees the daily operations at Chung Bike Shop, making sure everything runs smoothly from the front desk to the garage.</p>
+      </div>
+      <div class="absolute bottom-[-20px] flex gap-3">
+        <!-- Same icons -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="relative h-[713px] w-full bg-black">
+  <img src="https://placehold.co/1440x713" alt="Chung Bike Shop Banner" class="absolute inset-0 object-cover w-full h-full opacity-40" />
+  <!-- Play Button Overlay -->
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center">
+      <div class="w-12 h-12 bg-[#DB323E] clip-path-polygon"></div> <!-- You can replace this with an actual play icon -->
+    </div>
+  </div>
+  <!-- Text Overlay -->
+  <div class="absolute bottom-8 left-8 md:left-16 bg-[#DB323E] px-6 py-4">
+    <h2 class="text-white text-3xl md:text-5xl italic font-semibold">See Chung Bike Shop in Action</h2>
+  </div>
+</section>
+
+ <footer class="bg-[#292929] px-8 py-20 text-white">
+  <div class="max-w-screen-xl mx-auto flex flex-col gap-12">
+    <div class="flex flex-col md:flex-row justify-between gap-12">
+      <!-- Logo & Contact Info -->
+      <div class="flex flex-col gap-4 text-sm opacity-50">
+        <img src="https://placehold.co/80x100" alt="Logo" class="w-20 h-24" />
+        <p>2464 Royal Ln. Mesa, New Jersey 45463</p>
+        <p>(480) 555-0103</p>
+        <p>hello@ChungBikeShop.com</p>
+        <p>www.ChungBikeShop.com</p>
+      </div>
+
+      <!-- Opening Hours -->
+      <div class="flex flex-col gap-4">
+        <h4 class="text-lg font-medium">Opening Hours</h4>
+        <p class="text-base opacity-50">Mon–Fri: 08.00 - 20.00</p>
+        <p class="text-base opacity-50">Sat–Sun: 10.00 - 16.00</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="flex flex-col gap-4">
+        <h4 class="text-lg font-medium">Quick Links</h4>
+        <ul class="text-base opacity-50 space-y-1">
+          <li>About Us</li>
+          <li>Why with Us</li>
+          <li>Our Services</li>
+          <li>Appointment</li>
+          <li>Blog</li>
+          <li>FAQ</li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="flex flex-col gap-6 max-w-sm">
+        <h4 class="text-lg font-medium">Subscribe to Our Newsletter</h4>
+        <p class="text-base opacity-50">Sign up for our newsletter to receive exclusive promotions, news, and tips straight to your inbox.</p>
+        <div class="flex flex-col gap-4">
+          <input type="email" placeholder="Email Address" class="w-full px-4 py-3 border border-white/50 bg-transparent rounded-md text-white placeholder-white/50" />
+          <button class="bg-[#DB323E] py-3 rounded-md font-medium hover:brightness-110 transition">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider & Copyright -->
+    <div class="border-t border-white/50 pt-8 text-center text-base opacity-50">
+      © 2024 ChungBikeShop. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</html>
