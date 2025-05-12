@@ -11,18 +11,18 @@
     <!-- Form Login -->
     <div style="display: flex; flex-direction: column; gap: 16px;">
       <form action="loginP.php" method="post">
-        
+
       <!-- Input Email -->
       <div style="display: flex; flex-direction: column; gap: 8px;">
         <label style="color: black; font-size: 16px; font-family: Inter;">Email</label>
-        <input type="email" placeholder="example@gmail.com"
+        <input type="Email" placeholder="example@gmail.com"
                style="width: 520px; padding: 16px; border-radius: 12px; border: 1px solid #5C73DB; font-size: 14px; color: #9FA6B2;" />
       </div>
 
       <!-- Input Password -->
       <div style="display: flex; flex-direction: column; gap: 8px;">
         <label style="color: black; font-size: 16px; font-family: Inter;">Password</label>
-        <input type="password" placeholder="***************"
+        <input type="Password" placeholder="***************"
                style="width: 520px; padding: 16px; border-radius: 12px; border: 1px solid #E4E4E7; font-size: 14px; color: #9FA6B2;" />
       </div>
 
