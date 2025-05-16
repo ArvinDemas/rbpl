@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   <?php
 session_start();
 include "koneksi.php";
@@ -6,6 +7,9 @@ if (!isset($_SESSION['id_customer'])) {
     die("Akses ditolak. Silakan login terlebih dahulu.");
 }
 ?>
+=======
+  <?php session_start();?>
+>>>>>>> caa18187ebcead6718dfd9cb4d5d176dd8e74829
   <html>
   <head>
     <title>
@@ -59,67 +63,7 @@ if (!isset($_SESSION['id_customer'])) {
               </div>
           </div>
   </div>
-</div>
-</div>
-    
-    <!-- Hero Section -->
-    <section class="text-center py-20 bg-gradient-to-b from-gray-900 to-gray-800">
-    <h1 class="text-4xl font-bold">
-      Selamat Datang di
-    </h1>
-    <h2 class="text-5xl font-bold text-red-500">
-      ChungBike Shop
-    </h2>
-    <div class="my-8">
-      <img alt="FixinMoto logo" class="mx-auto" height="100" src="https://placehold.co/100x100" width="100"/>
-    </div>
-    <p class="text-lg max-w-2xl mx-auto">
-    Solusi lengkap untuk semua kebutuhan otomotif Anda. Dari perbaikan hingga perawatan, kami siap membantu Anda   </p>
-    <div class="mt-8">
-      <a class="bg-red-500 text-white px-6 py-2 rounded-full hover:bg-red-600" href="#">
-      Mulai 
-      </a>
-    </div>
-    </section>
-    <!-- Services Section -->
-    <section class="py-20 bg-gray-800">
-    <div class="text-center mb-12">
-      <h3 class="text-3xl font-bold text-red-500">
-      Solusi Otomotif 
-      </h3>
-      <h4 class="text-4xl font-bold">
-      Komprehensif
-      </h4>
-      <p class="text-lg max-w-2xl mx-auto">
-      Dari perbaikan mesin hingga penggantian ban, kami menawarkan berbagai layanan untuk menjaga kendaraan Anda dalam kondisi prima    </p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-      <div class="bg-gray-700 p-6 rounded-lg text-center">
-      <img alt="Engine Repair &amp; Maintenance" class="mx-auto mb-4" height="100" src="https://placehold.co/100x100" width="100"/>
-      <h5 class="text-xl font-bold">
-        Perawatan &amp; Perbaikan Mesin
-      </h5>
-      </div>
-          <!-- <div class="absolute flex flex-col justify-center text-white mt-32 w-full" >
-              <h1 class="text-4xl md:text-9xl font-bold ml-[10%]">
-                  Drive Confidently with
-              </h1>
-              <h2 class="text-5xl md:text-9xl font-bold text-red-600 mt-2 ml-[10%]">
-                  Chung Bike Shop
-              </h2>
-              <div class="mt-16 flex space-x-4 ml-[10%]">
-                  <a href="#" class="bg-red-600 text-white px-6 py-4 rounded-lg hover:bg-red-600">
-                      Appointment Now
-                  </a>
-                  <a href="#" class="border-2 border-white text-white px-6 py-4 rounded-lg hover:bg-white hover:text-gray-900">
-                      Our Services
-                  </a>
-              </div>
-          </div> -->
-  </div>
-  </div>
-    </div>   
-    
+
     <!-- Bagian 1 - Our Services -->
   <section class="bg-[#222222] text-white py-16 px-4">
       <div class="max-w-screen-xl mx-auto flex flex-col gap-12">
@@ -143,12 +87,9 @@ if (!isset($_SESSION['id_customer'])) {
         <div class="grid gap-8 md:grid-cols-3">
           
           <!-- Card 1 -->
-          <div class="relative w-full h-[455px] rounded-2xl overflow-hidden bg-gradient-to-b from-black/0 to-black/80 p-6 flex flex-col justify-between">
-            <!-- Optional Background -->
-            <!-- <img src="your-image-url.jpg" class="absolute inset-0 w-full h-full object-cover z-0 opacity-20" /> -->
-    
+          <div class="relative w-full h-[455px] rounded-2xl overflow-hidden p-6 flex flex-col justify-between" style="background-image: url('../image/1.png'); background-size: cover; background-position: center;">
             <!-- Content -->
-            <div class="z-10 flex flex-col gap-6">
+              <div class="z-10 flex flex-col gap-6 justify-end h-full">
               <div class="text-white text-base font-medium">01</div>
               <div class="w-16 h-16">
                   <svg xmlns="http://www.w3.org/2000/svg" width="65" height="64" viewBox="0 0 65 64" fill="none">
@@ -165,8 +106,8 @@ if (!isset($_SESSION['id_customer'])) {
           </div>
     
           <!-- Card 2 -->
-          <div class="relative w-full h-[455px] rounded-2xl overflow-hidden bg-gradient-to-b from-black/0 to-black/80 p-6 flex flex-col justify-between">
-            <div class="z-10 flex flex-col gap-6">
+          <div class="relative w-full h-[455px] rounded-2xl overflow-hidden p-6 flex flex-col justify-between" style="background-image: url('../image/2.png'); background-size: cover; background-position: center;">
+              <div class="z-10 flex flex-col gap-6 justify-end h-full">
               <div class="text-white text-base font-medium">02</div>
               <div class="w-16 h-16">
                   <svg xmlns="http://www.w3.org/2000/svg" width="65" height="64" viewBox="0 0 65 64" fill="none">
@@ -183,8 +124,8 @@ if (!isset($_SESSION['id_customer'])) {
           </div>
     
           <!-- Card 3 -->
-          <div class="relative w-full h-[455px] rounded-2xl overflow-hidden bg-gradient-to-b from-black/0 to-black/80 p-6 flex flex-col justify-between">
-            <div class="z-10 flex flex-col gap-6">
+          <div class="relative w-full h-[455px] rounded-2xl overflow-hidden p-6 flex flex-col justify-between" style="background-image: url('../image/3.png'); background-size: cover; background-position: center;">
+              <div class="z-10 flex flex-col gap-6 justify-end h-full">
               <div class="text-white text-base font-medium">03</div>
               <div class="w-16 h-16">
                   <svg xmlns="http://www.w3.org/2000/svg" width="65" height="64" viewBox="0 0 65 64" fill="none">
@@ -205,7 +146,6 @@ if (!isset($_SESSION['id_customer'])) {
               </div>
             </div>
           </div>
-          
         </div>
     
         <!-- Bawah -->
@@ -303,7 +243,7 @@ if (!isset($_SESSION['id_customer'])) {
         <!-- Gambar Kanan -->
         <div class="flex-1 relative w-full max-w-[619px] h-auto">
           <div class="relative">
-            <img src="https://placehold.co/619x638" alt="Main Image" class="rounded-2xl w-full object-cover">
+            <img src="../image/5.png" alt="Main Image" class="rounded-2xl w-full object-cover">
             
             <!-- Badge Experience -->
             <div class="absolute -top-10 right-0 bg-rose-600 px-6 py-4 rounded-2xl text-center shadow-lg">
@@ -312,7 +252,7 @@ if (!isset($_SESSION['id_customer'])) {
             </div>
     
             <!-- Gambar kecil tambahan -->
-            <img src="https://placehold.co/244x244" alt="Secondary" class="absolute bottom-[-30px] left-0 w-60 h-60 rounded-2xl border border-white shadow-md">
+            <img src="../image/4.png" alt="Secondary" class="absolute bottom-[-30px] left-0 w-60 h-60 rounded-2xl border border-white shadow-md">
           </div>
         </div>
     
@@ -320,7 +260,7 @@ if (!isset($_SESSION['id_customer'])) {
     </section>
     
   <!-- Bagian 3 - Special Offers -->
-  <section class="bg-[#222222] text-white py-28 px-4">
+  <section class=" text-white py-28 px-4" style="background-image: url(../image/6.png); background-size: cover; background-position: center; background-repeat: no-repeat;">
       <div class="max-w-screen-xl mx-auto flex flex-col items-center text-center gap-6">
         <h2 class="text-4xl md:text-5xl font-semibold">Penawaran Spesial untuk Anda</h2>
         <p class="text-base opacity-70 max-w-xl">
@@ -387,7 +327,7 @@ if (!isset($_SESSION['id_customer'])) {
     
           <!-- Gambar -->
           <div class="flex-1">
-            <img src="https://placehold.co/584x640" alt="Process Illustration" class="w-full max-w-md lg:max-w-full rounded-2xl mx-auto">
+            <img src="../image/7.png" alt="Process Illustration" class="w-full max-w-md lg:max-w-full rounded-2xl mx-auto">
           </div>
         </div>
     
@@ -515,7 +455,7 @@ if (!isset($_SESSION['id_customer'])) {
           
           <!-- Logo & Kontak -->
           <div class="flex flex-col gap-4 max-w-xs">
-            <img class="w-20 h-24" src="https://placehold.co/80x100" alt="Logo" />
+            <img class="w-20 h-24" src="../image/desain tanpa judul.png" alt="Logo" />
             <p class="text-base opacity-50">2464 Royal Ln. Mesa, New Jersey 45463</p>
             <p class="text-base opacity-50">(480) 555-0103</p>
             <p class="text-base opacity-50">hello@ChungBikeShop.com</p>
