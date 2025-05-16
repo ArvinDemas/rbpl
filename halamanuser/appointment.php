@@ -1,6 +1,15 @@
+ <?php
+session_start();
+include "koneksi.php";
+
+if (!isset($_SESSION['id_customer'])) {
+    die("Akses ditolak. Silakan login terlebih dahulu.");
+}
+?>
 <title>
    ChungBike Shop
   </title>
+  
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
@@ -41,41 +50,45 @@
 </section>
 <!-- Appointment Form Section -->
 <section class="w-full bg-[#222222] py-20 px-4 md:px-16 flex flex-col items-center">
-  <div class="w-full max-w-screen-xl bg-[#222222] p-6 md:p-10 rounded-xl flex flex-col gap-8">
+  <form action="../halamanuser/appointmentproses.php" method="POST" class="w-full max-w-screen-xl bg-[#222222] p-6 md:p-10 rounded-xl flex flex-col gap-8">
     <h2 class="text-white text-2xl font-semibold">Personal Information</h2>
     <div class="flex flex-col gap-6">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <input class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="First Name" />
-        <input class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Last Name" />
+        <input name="first_name" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="First Name" required />
+        <input name="last_name" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Last Name" required />
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <input class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Email" />
-        <input class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Phone Number" />
+        <input name="email" type="email" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Email" required />
+        <input name="phone_number" type="tel" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Phone Number" required />
       </div>
     </div>
     <h2 class="text-white text-2xl font-semibold">Motorcycle Information</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <input class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Motorcycle Brand" />
-      <input class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Motorcycle Model" />
-      <input class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Motorcycle Year" />
+      <input name="motorcycle_brand" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Motorcycle Brand" required />
+      <input name="motorcycle_model" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Motorcycle Model" required />
+      <input name="motorcycle_year" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Motorcycle Year" required />
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <input class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="License Plate" />
-      <input class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="VIN (Optional)" />
+      <input name="license_plate" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="License Plate" required />
+      <input name="vin" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="VIN (Optional)" />
     </div>
     <h2 class="text-white text-2xl font-semibold">Appointment Details</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <input type="date" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" />
-      <input type="time" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" />
+      <input name="appointment_date" type="date" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" required />
+      <input name="appointment_time" type="time" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" required />
     </div>
     <h2 class="text-white text-2xl font-semibold">Service Details</h2>
-    <select class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full">
-      <option disabled selected>Select Service Category</option>
+    <select name="service_category" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" required>
+      <option disabled selected value="">Select Service Category</option>
+      <option value="Oil Change">Oil Change</option>
+      <option value="Brake Inspection">Brake Inspection</option>
+      <option value="Engine Tune-Up">Engine Tune-Up</option>
     </select>
-    <textarea rows="6" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Service Details"></textarea>
-    <button class="bg-[#DB323E] text-white px-8 py-3 rounded-md hover:bg-[#c4212f] transition w-fit self-center">Make an Appointment</button>
-  </div>
+    <textarea name="service_details" rows="6" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" placeholder="Service Details" required></textarea>
+    <button type="submit" class="bg-[#DB323E] text-white px-8 py-3 rounded-md hover:bg-[#c4212f] transition w-fit self-center">Make an Appointment</button>
+  </form>
 </section>
+
 <!-- FAQ Section -->
 <section class="w-full bg-[#222222] py-20 px-4 md:px-16 flex flex-col items-center gap-20">
   <div class="w-full max-w-screen-xl flex flex-col items-center gap-20">

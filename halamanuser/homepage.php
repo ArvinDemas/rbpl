@@ -1,4 +1,11 @@
-  <?php ?>
+  <?php
+session_start();
+include "koneksi.php";
+
+if (!isset($_SESSION['id_customer'])) {
+    die("Akses ditolak. Silakan login terlebih dahulu.");
+}
+?>
   <html>
   <head>
     <title>

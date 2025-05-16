@@ -1,17 +1,25 @@
+<?php
+session_start();
+include "../halamanuser/koneksi.php";
+
+if (!isset($_SESSION['id_admin'])) {
+    die("Akses ditolak. Silakan login terlebih dahulu.");
+}
+
+
+$result = mysqli_query($konek, "SELECT * FROM booking ORDER BY created_at DESC");
+?>
+
 <html>
- <head>
-  <title>
-   ChungBike Shop
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
-  <style>
-   body {
-            font-family: 'Roboto', sans-serif;
-        }
-  </style>
+<head>
+  <title>ChungBike Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>body { font-family: 'Roboto', sans-serif; }</style>
+</head>
+<body>
+
 <!-- Admin Sidebar -->
 <aside class="fixed top-0 left-0 w-[256px] h-full bg-gradient-to-b from-[#DB323E] to-[#DB323E] flex flex-col items-start gap-8">
   <div class="w-full h-16 bg-[#1D0201] flex justify-center items-center">
@@ -28,9 +36,9 @@
     <nav class="flex flex-col gap-3 mt-6 w-full">
       <a href="#" class="px-9 py-2 text-white text-base font-medium">Report</a>
       <a href="#" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium">Request</a>
-      <a href="#" class="px-9 py-2 text-white text-base">Service Progres</a>
+      <a href="#" class="px-9 py-2 text-white text-base">Service Progress</a>
       <a href="#" class="px-9 py-2 text-white text-base">Inventory</a>
-      <a href="#" class="px-9 py-2 text-white text-base">Exit</a>
+      <a href="logout.php" class="px-9 py-2 text-white text-base">Exit</a>
     </nav>
   </div>
 </aside>
@@ -57,37 +65,34 @@
       <span class="text-center">Actions</span>
     </div>
     <div class="flex flex-col gap-6">
-      <div class="grid grid-cols-6 items-center gap-4 text-sm">
-        <p class="text-[#222222]">Basic Maintenance</p>
-        <p class="text-[#27272A]">Jane Cooper</p>
-        <p class="text-[#27272A]">25/02 - 13:00</p>
-        <p class="text-[#27272A]">08112233445566</p>
-        <div class="rounded-md px-2 py-1 bg-blue-100 text-center text-xs">...</div>
-        <div class="flex gap-2">
-          <button class="px-3 py-1 border border-[#5C73DB] text-[#5C73DB] rounded-md text-xs font-medium">Accept</button>
-          <button class="px-3 py-1 bg-[#DC2626] text-white rounded-md text-xs font-medium">Reject</button>
+      <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+        <div class="grid grid-cols-6 items-center gap-4 text-sm">
+          <p class="text-[#222222]"><?= htmlspecialchars($row['service_category']) ?></p>
+          <p class="text-[#27272A]"><?= htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) ?></p>
+          <p class="text-[#27272A]"><?= htmlspecialchars($row['appointment_date']) ?> - <?= htmlspecialchars($row['appointment_time']) ?></p>
+          <p class="text-[#27272A]"><?= htmlspecialchars($row['phone_number']) ?></p>
+          <div class="rounded-md px-2 py-1 bg-blue-100 text-center text-xs"><?= htmlspecialchars($row['id_booking']) ?> <a href="../halamanadmin/requestedit.php" class="px-9 py-2 text-white text-base">Service Progress</a></div>
+          <div class="flex gap-2">
+            <form method="POST" action="update_status.php">
+              
+              <button name="status" value="accepted" class="px-3 py-1 border border-[#5C73DB] text-[#5C73DB] rounded-md text-xs font-medium">Accept</button>
+              <button name="status" value="rejected" class="px-3 py-1 bg-[#DC2626] text-white rounded-md text-xs font-medium">Reject</button>
+            </form>
+          </div>
         </div>
-      </div>
-      <div class="h-px bg-[#F4F4F5]"></div>
-      <!-- Repeat other requests similarly -->
+        <div class="h-px bg-[#F4F4F5]"></div>
+      <?php endwhile; ?>
     </div>
   </div>
 
   <!-- Pagination and Footer Bar -->
   <div class="w-full max-w-6xl mx-auto mt-6 flex flex-col gap-4">
     <div class="w-full bg-white rounded-b-xl py-4 px-6 border-t border-[#FAFAFA] flex justify-between items-center">
-      <p class="text-[#A1A1AA] text-base">100 utilisateurs</p>
-      <div class="flex border border-[#E4E4E7] rounded-lg overflow-hidden">
-        <button class="px-3 py-2 border-r border-[#D4D4D8] text-[#71717A]">&lt;</button>
-        <button class="px-4 py-2 bg-[#4763E4] text-white">1</button>
-        <button class="px-4 py-2 border-l border-[#D4D4D8]">2</button>
-        <button class="px-4 py-2 border-l border-[#D4D4D8]">3</button>
-        <button class="px-4 py-2 border-l border-[#D4D4D8]">...</button>
-        <button class="px-4 py-2 border-l border-[#D4D4D8]">8</button>
-        <button class="px-4 py-2 border-l border-[#D4D4D8]">9</button>
-        <button class="px-4 py-2 border-l border-[#D4D4D8]">10</button>
-        <button class="px-3 py-2 border-l border-[#D4D4D8] text-[#71717A]">&gt;</button>
-      </div>
+      <p class="text-[#A1A1AA] text-base">Total Booking: <?= mysqli_num_rows($result) ?></p>
+      <!-- Pagination bisa ditambahkan di sini -->
     </div>
   </div>
 </section>
+
+</body>
+</html>
