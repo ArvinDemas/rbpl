@@ -19,13 +19,12 @@
       
       <!-- component -->
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-  <div class="min-h-screen bg-cover bg-center" style="background-image: url('../img/Gambar\ WhatsApp\ 2025-04-21\ pukul\ 13.30.46_e88c5b9a.jpg');">
+  <div class="min-h-screen bg-cover bg-center" style="background-image: url('../image/Gambar\ WhatsApp\ 2025-04-21\ pukul\ 13.30.46_e88c5b9a.jpg');">
       <div class="w-9/10 pt-12 mx-auto text-gray-700 bg-transparent dark-mode:text-gray-200 dark-mode:bg-transparent">
           <div x-data="{ open: true }" class="flex flex-col max-w-[85%] px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
               <div class="flex flex-row items-center justify-between p-4">
               <div href="homepage.php">
-                  <img alt="FixinMoto logo" class="mx-auto" height="100" src="../img/Desain tanpa judul.png" width="100"/>
-                  
+                  <img alt="FixinMoto logo" class="mx-auto" height="100" src="../image/Desain tanpa judul.png" width="100"/>
               </div>
               </div>
               <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-start md:flex-row">
@@ -33,7 +32,7 @@
               <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Booking</a>
               <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact</a> 
               <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="login.php">
-                  <img src="../img/Vector.png" alt="User Icon" class="w-6 h-6 rounded-full">
+                  <img src="../Image/Vector.png" alt="User Icon" class="w-6 h-6 rounded-full">
               </a>
               </nav>
           </div>

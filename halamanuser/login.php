@@ -4,8 +4,8 @@
     
     <!-- Logo dan Judul -->
     <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-      <img style="width: 200px;" src="../img/Desain tanpa judul.png" alt="Logo" />
-      <div style="color: black; font-size: 20px; font-family: Inter; font-weight: 500;">Please Log In to Continue</div>
+      <img style="width: 200px;" src="../image/Desain tanpa judul.png" alt="Logo" />
+      <div style="color: black; font-size: 20px; font-family: Inter; font-weight: 500;">Please Log In to Continue </div>
     </div>
 
     <!-- Form Login -->
@@ -16,14 +16,14 @@
       <div style="display: flex; flex-direction: column; gap: 8px;">
         <label style="color: black; font-size: 16px; font-family: Inter;">Email</label>
         <input type="Email" placeholder="example@gmail.com"
-               style="width: 520px; padding: 16px; border-radius: 12px; border: 1px solid #5C73DB; font-size: 14px; color: #9FA6B2;" />
+               style="width: 520px; padding: 16px; border-radius: 12px; border: 1px solid #5C73DB; font-size: 14px; color: black;" />
       </div>
 
       <!-- Input Password -->
       <div style="display: flex; flex-direction: column; gap: 8px;">
         <label style="color: black; font-size: 16px; font-family: Inter;">Password</label>
         <input type="Password" placeholder="***************"
-               style="width: 520px; padding: 16px; border-radius: 12px; border: 1px solid #E4E4E7; font-size: 14px; color: #9FA6B2;" />
+               style="width: 520px; padding: 16px; border-radius: 12px; border: 1px solid #E4E4E7; font-size: 14px; color: black;" />
       </div>
 
       <!-- Lupa Password -->
@@ -36,8 +36,8 @@
 
       <!-- Link Register -->
       <div style="text-align: center; font-size: 16px; font-family: Inter;">
-        Don’t have an account?
-        <a href="#" style="color: #5C73DB; text-decoration: underline;">Create Account</a>
+        Tidak Punya Akun?
+        <a href="regist.php" style="color: #5C73DB; text-decoration: none;">Create Account</a>
       </div>   
     </form>
     </div>
