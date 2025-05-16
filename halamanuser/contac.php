@@ -15,9 +15,9 @@
     <div class="w-full flex justify-between items-center gap-8">
       <img src="https://placehold.co/80x100" class="w-20 h-24" alt="Logo" />
       <div class="flex gap-8 text-white text-sm font-semibold">
-        <a href="#about">About Us</a>
-        <a href="#appointment">Appointment</a>
-        <a href="#home">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="appointment.php">Appointment</a>
+        <a href="homepage.php">Home</a>
       </div>
       <div class="bg-[#DB323E] rounded-md px-8 py-3 flex items-center">
         <div class="w-6 h-6 bg-white"></div>

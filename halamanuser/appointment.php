@@ -17,9 +17,9 @@
       <img src="https://placehold.co/80x100" alt="Logo" class="w-full h-full object-cover" />
     </div>
     <nav class="flex gap-8 text-white text-sm font-semibold">
-      <a href="#" class="hover:text-[#DB323E] transition">About Us</a>
-      <a href="#" class="hover:text-[#DB323E] transition">Home</a>
-      <a href="#" class="hover:text-[#DB323E] transition">Contact</a>
+      <a href="aboutus.html" class="hover:text-[#DB323E] transition">About Us</a>
+      <a href="homepage.php" class="hover:text-[#DB323E] transition">Home</a>
+      <a href="contac.php" class="hover:text-[#DB323E] transition">Contact</a>
     </nav>
     <button class="bg-[#DB323E] text-white px-8 py-3 rounded-md hover:bg-[#c4212f] transition">
       <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="16" height="16">
