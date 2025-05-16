@@ -1,4 +1,12 @@
-  <?php ?>
+  <?php 
+  session_start();
+
+// Jika belum login, arahkan kembali ke login
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== "login") {
+    header("Location: login.php?pesan=akses_ditolak");
+    exit;
+}
+  ?>
   <html>
   <head>
     <title>

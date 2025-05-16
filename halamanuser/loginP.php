@@ -1,64 +1,41 @@
-<?php 
+<?php
 session_start();
 include "koneksi.php";
 
-$email = $_POST['Email'];
-$password = $_POST['Password'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = mysqli_real_escape_string($konek, $_POST['email']);
+    $password = mysqli_real_escape_string($konek, $_POST['password']);
 
-$loginSukses = false;
-$role = '';
-$userData = null;
+    // Ambil data user berdasarkan email
+    $query = "SELECT * FROM customer WHERE email = ?";
+    $stmt = mysqli_prepare($konek, $query);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
-// Fungsi untuk cek login dari tabel tertentu
-function cekLogin($connect, $table, $email, $password) {
-    $sql = "SELECT * FROM $table WHERE Email = ?";
-    $stmt = $connect->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    if ($row = mysqli_fetch_assoc($result)) {
+        // Verifikasi password
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['id_customer'] = $row['id_customer'];
+            $_SESSION['nama'] = $row['nama'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['status'] = "login";
 
-    if ($result->num_rows === 1) {
-        $row = $result->fetch_assoc();
-        if ($row['Password'] === $password) { // NOTE: sebaiknya hash password
-            return $row;
+             header("Location: homepage.php");
+            exit;
+
+        } else {
+            // Password salah
+            header("Location: login.php?pesan=password_salah");
+            exit;
         }
+    } else {
+        // Email tidak ditemukan
+        header("Location: login.php?pesan=email_tidak_ditemukan");
+        exit;
     }
-    return null;
-}
-
-// Cek di admin
-$userData = cekLogin($connect, 'admin', $email, $password);
-if ($userData) {
-    $loginSukses = true;
-    $role = 'admin';
-}
-
-// Jika belum berhasil, cek di customer
-if (!$loginSukses) {
-    $userData = cekLogin($connect, 'customer', $email, $password);
-    if ($userData) {
-        $loginSukses = true;
-        $role = 'customer';
-    }
-}
-
-// Jika belum berhasil, cek di mekanik
-if (!$loginSukses) {
-    $userData = cekLogin($connect, 'mekanik', $email, $password);
-    if ($userData) {
-        $loginSukses = true;
-        $role = 'mekanik';
-    }
-}
-
-if ($loginSukses) {
-    $_SESSION['Email'] = $email;
-    $_SESSION['role'] = $role;
-    echo "Login berhasil sebagai $role";
-    // header("Location: dashboard_$role.php");
 } else {
-    echo "Email atau password salah!";
+    // Akses langsung ke file
+    header("Location: login.php");
+    exit;
 }
-
-$connect->close();
-?>
