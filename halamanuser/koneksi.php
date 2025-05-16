@@ -2,9 +2,15 @@
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
-$db = 'db_klp10';
+$database = 'db_klp10';
 
-$connect = new mysqli($hostname, $username, $password, $db);
-if ($connect->connect_error) {
-    die(''. $connect->connect_error);
-}
+//membuat koneks
+	$konek = mysqli_connect($hostname, $username, $password, $database);
+
+	//cek koneksi
+	if(!$konek){
+		die("koneksi gagal".mysqli_connect_error());
+	} else {
+		echo "";
+	}
+?>

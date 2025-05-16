@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $no_hp = mysqli_real_escape_string($connect, $_POST['No_HP']);
 
     // Hash the password
-    // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare the SQL statement
     $sql = "INSERT INTO customer (Nama, Email, Password, NO_HP) VALUES (?, ?, ?, ?)";
