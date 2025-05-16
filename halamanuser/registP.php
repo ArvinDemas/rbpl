@@ -2,35 +2,34 @@
 session_start();
 include "koneksi.php";
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the input values and sanitize them
-    $nama = mysqli_real_escape_string($connect, $_POST['Nama']);
-    $email = mysqli_real_escape_string($connect, $_POST['Email']);
-    $password = mysqli_real_escape_string($connect, $_POST['Password']);
-    $no_hp = mysqli_real_escape_string($connect, $_POST['No_HP']);
+    // Tangkap dan sanitasi input
+    $nama = mysqli_real_escape_string($konek, $_POST['nama']);
+    $email = mysqli_real_escape_string($konek, $_POST['email']);
+    $password = mysqli_real_escape_string($konek, $_POST['password']);
+    $no_hp = mysqli_real_escape_string($konek, $_POST['no_hp']);
 
-    // Hash the password
+    // Enkripsi password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Prepare the SQL statement
-    $sql = "INSERT INTO customer (Nama, Email, Password, NO_HP) VALUES (?, ?, ?, ?)";
-    $stmt = mysqli_prepare($connect, $sql);
+    // Query INSERT
+    $sql = "INSERT INTO customer (nama, email, password, no_hp) VALUES (?, ?, ?, ?)";
+    $stmt = mysqli_prepare($konek, $sql);
     
-    // Bind parameters
+    // Bind parameter
     mysqli_stmt_bind_param($stmt, "ssss", $nama, $email, $hashed_password, $no_hp);
 
-    // Execute the statement
+    // Eksekusi query
     if (mysqli_stmt_execute($stmt)) {
-        header("location:login.php");
+        header("Location: login.php");
         exit;
     } else {
-        // Log the error for debugging
-        error_log("Database error: " . mysqli_error($connect));
-        header("location:login.php?error=4");
-        exit;  
+        error_log("Database Error: " . mysqli_error($konek));
+        header("Location: register.php?error=1");
+        exit;
     }
-
+} else {
+    header("Location: register.php");
+    exit;
 }
-
-
+?>

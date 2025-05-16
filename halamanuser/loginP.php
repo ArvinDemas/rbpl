@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['email'] = $row['email'];
             $_SESSION['status'] = "login";
 
-             header("Location: homepage.php");
+            // Redirect ke homepage
+            header("Location: homepage.php");
             exit;
-
         } else {
             // Password salah
             header("Location: login.php?pesan=password_salah");
