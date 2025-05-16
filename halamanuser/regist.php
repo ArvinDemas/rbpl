@@ -1,4 +1,4 @@
-<div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; background: white; overflow: hidden;">
+<div style="width: 100%; min-height: 100vh; display: flex; justify-content: center; align-items: center; background: white; overflow: auto;"> <!-- Mengubah height menjadi min-height dan overflow menjadi auto -->
   <div style="display: flex; flex-direction: column; align-items: center; gap: 40px;">
     
     <!-- Logo dan Judul -->

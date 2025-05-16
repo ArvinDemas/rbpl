@@ -16,15 +16,13 @@
       <img src="https://placehold.co/80x100" alt="Logo" class="w-full h-full object-cover" />
     </div>
     <nav class="flex gap-8 text-white text-sm font-semibold">
-      <a href="#" class="hover:text-[#DB323E] transition">About Us</a>
-      <a href="#" class="hover:text-[#DB323E] transition">Home</a>
-      <a href="#" class="hover:text-[#DB323E] transition">Contact</a>
+      <a href="aboutus.html" class="hover:text-[#DB323E] transition">About Us</a>
+      <a href="homepage.php" class="hover:text-[#DB323E] transition">Home</a>
+      <a href="contac.php" class="hover:text-[#DB323E] transition">Contact</a>
     </nav>
-    <button class="bg-[#DB323E] text-white px-8 py-3 rounded-md hover:bg-[#c4212f] transition">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="16" height="16">
-        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4S8 5.79 8 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-      </svg>
-    </button>
+    <a class="bg-[#DB323E] text-white px-8 py-3 rounded-md hover:bg-[#c4212f] transition" href="logout.php">
+      logout
+      </a>
   </div>
 
   <!-- Profile Content -->
