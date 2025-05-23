@@ -69,7 +69,7 @@ $result = mysqli_query($konek, $query);
       <a href="#" class="px-9 py-2 text-white text-base font-medium">Report</a>
       <a href="../halamanadmin/request.php" class="px-9 py-2 text-white text-base font-medium">Request</a>
       <a href="#" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium">Service Progres</a>
-      <a href="#" class="px-9 py-2 text-white text-base">Inventory</a>
+      <a href="../halamanadmin/inventory.php" class="px-9 py-2 text-white text-base">Inventory</a>
       <a href="#" class="px-9 py-2 text-white text-base">Exit</a>
     </nav>
   </div>
