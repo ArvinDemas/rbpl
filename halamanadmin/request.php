@@ -71,9 +71,10 @@ $result = mysqli_query($konek, "SELECT * FROM booking ORDER BY created_at DESC")
           <p class="text-[#27272A]"><?= htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) ?></p>
           <p class="text-[#27272A]"><?= htmlspecialchars($row['appointment_date']) ?> - <?= htmlspecialchars($row['appointment_time']) ?></p>
           <p class="text-[#27272A]"><?= htmlspecialchars($row['phone_number']) ?></p>
-          <div class="rounded-md px-2 py-1 bg-blue-100 text-center text-xs"><?= htmlspecialchars($row['id_booking']) ?> <a href="../halamanadmin/requestedit.php" class="px-9 py-2 text-white text-base">Service Progress</a></div>
+          <a href="requestedit.php?id=<?= $row['id_booking'] ?>" class="rounded-md px-2 py-1 bg-blue-100 text-center text-xs text-blue-800 font-semibold hover:underline">detail</a>
+
           <div class="flex gap-2">
-            <form method="POST" action="update_status.php">
+            <form method="POST" action="../halamanadmin/requestedit.php">
               
               <button name="status" value="accepted" class="px-3 py-1 border border-[#5C73DB] text-[#5C73DB] rounded-md text-xs font-medium">Accept</button>
               <button name="status" value="rejected" class="px-3 py-1 bg-[#DC2626] text-white rounded-md text-xs font-medium">Reject</button>
