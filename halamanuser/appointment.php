@@ -20,21 +20,19 @@ if (!isset($_SESSION['id_customer'])) {
         }
   </style>
   <!-- Appointment Header Section -->
-<section class="w-full bg-black/60 bg-[url('https://placehold.co/1440x456')] bg-cover bg-center py-20 px-4 md:px-16 flex flex-col items-center gap-24 relative">
+<section class="w-full bg-black/60 bg-[url('../image/8.png')] bg-cover bg-center py-20 px-4 md:px-16 flex flex-col items-center gap-24 relative">
   <div class="w-full max-w-screen-xl flex flex-col md:flex-row items-center justify-between gap-8 absolute left-1/2 -translate-x-1/2 top-6">
     <div class="w-20 h-24">
-      <img src="https://placehold.co/80x100" alt="Logo" class="w-full h-full object-cover" />
+      <img src="../image/Desain tanpa judul.png" alt="Logo" class="w-full h-full object-cover" />
     </div>
     <nav class="flex gap-8 text-white text-sm font-semibold">
       <a href="aboutus.html" class="hover:text-[#DB323E] transition">About Us</a>
       <a href="homepage.php" class="hover:text-[#DB323E] transition">Home</a>
       <a href="contac.php" class="hover:text-[#DB323E] transition">Contact</a>
     </nav>
-    <button class="bg-[#DB323E] text-white px-8 py-3 rounded-md hover:bg-[#c4212f] transition">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="16" height="16">
-        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4S8 5.79 8 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-      </svg>
-    </button>
+    <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="myprofile.php">
+        <img src="../Image/Vector.png" alt="User Icon" class="w-6 h-6 rounded-full"> 
+    </a>
   </div>
 
   <div class="w-full max-w-screen-xl flex flex-col items-center justify-center text-center mt-32">
@@ -100,35 +98,57 @@ if (!isset($_SESSION['id_customer'])) {
     </div>
 
     <div class="flex flex-col lg:flex-row gap-8 w-full">
-      <img src="https://placehold.co/600x503" alt="FAQ Visual" class="w-[600px] h-[503px] rounded-xl object-cover" />
-      <div class="flex flex-col w-full">
-        <div class="border-t border-[#EBEBEB] py-5 flex justify-between items-center gap-6">
-          <p class="text-white text-lg font-medium">What services do you offer?</p>
-          <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
-        </div>
-        <div class="pb-6 text-white/50 text-base font-normal leading-6">
-          We provide a wide range of services, including oil changes, brake repair, engine diagnostics, and more. Check our <span class="font-bold">Services Needed</span> section for details.
-        </div>
+      <img src="../image/9.png" alt="FAQ Visual" class="w-[600px] h-[503px] rounded-xl object-cover" />
+    <div class="flex flex-col w-full">
+        <details class="border-t border-[#EBEBEB] py-5">
+          <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
+            What services do you offer?
+            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+          </summary>
+          <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
+            We provide a wide range of services, including oil changes, brake repair, engine diagnostics, and more. Check our <span class="font-bold">Services Needed</span> section for details.
+          </p>
+        </details>
 
-        <div class="border-t border-[#EBEBEB] py-5 flex justify-between items-center gap-6">
-          <p class="text-white text-lg font-medium">Do you use original parts for repairs?</p>
-          <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
-        </div>
+        <details class="border-t border-[#EBEBEB] py-5">
+          <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
+            Do you use original parts for repairs?
+            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+          </summary>
+          <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
+            Yes, we use original parts to ensure the quality and longevity of repairs.
+          </p>
+        </details>
 
-        <div class="border-t border-[#EBEBEB] py-5 flex justify-between items-center gap-6">
-          <p class="text-white text-lg font-medium">How long does a typical service take?</p>
-          <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
-        </div>
+        <details class="border-t border-[#EBEBEB] py-5">
+          <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
+            How long does a typical service take?
+            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+          </summary>
+          <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
+            A typical service usually takes between 1 to 3 hours depending on the type of repair or maintenance.
+          </p>
+        </details>
 
-        <div class="border-t border-[#EBEBEB] py-5 flex justify-between items-center gap-6">
-          <p class="text-white text-lg font-medium">Can I drop off my car and pick it up later?</p>
-          <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
-        </div>
+        <details class="border-t border-[#EBEBEB] py-5">
+          <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
+            Can I drop off my car and pick it up later?
+            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+          </summary>
+          <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
+            Yes, you can drop off your vehicle and pick it up at a later time convenient for you.
+          </p>
+        </details>
 
-        <div class="border-t border-[#EBEBEB] py-5 flex justify-between items-center gap-6">
-          <p class="text-white text-lg font-medium">What forms of payment do you accept?</p>
-          <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
-        </div>
+        <details class="border-t border-[#EBEBEB] py-5">
+          <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
+            What forms of payment do you accept?
+            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+          </summary>
+          <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
+            We accept cash, credit cards, and mobile payments.
+          </p>
+        </details>
       </div>
     </div>
   </div>
@@ -136,7 +156,7 @@ if (!isset($_SESSION['id_customer'])) {
 <!-- Footer Section -->
 <footer class="w-full bg-[#292929] py-20 px-4 md:px-16 flex flex-col items-center gap-20">
   <div class="w-full max-w-screen-xl flex flex-col gap-14">
-    <img src="https://placehold.co/80x100" alt="Logo" class="w-20 h-24" />
+    <img src="../image/Desain tanpa judul.png" alt="Logo" class="w-20 h-24" />
     <div class="flex flex-col md:flex-row justify-between items-start w-full gap-10">
       <div class="flex flex-col gap-4 text-white text-base font-normal opacity-50">
         <p>2464 Royal Ln. Mesa, New Jersey 45463</p>
