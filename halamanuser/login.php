@@ -1,12 +1,23 @@
+<?php
+if (isset($_GET['registered']) && $_GET['registered'] == '1') {
+    $registered_message = "Registration successful! Please log in.";
+} else {
+    $registered_message = "";
+}
+?>
 <div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; background: white; overflow: hidden;">
   <div style="display: flex; flex-direction: column; align-items: center; gap: 40px;">
 
-    <!-- Logo dan Judul -->
+    <?php if (!empty($registered_message)): ?>
+      <div style="color: green; font-size: 16px; font-family: Inter; font-weight: 500; margin-bottom: 16px;">
+        <?php echo htmlspecialchars($registered_message); ?>
+      </div>
+    <?php endif; ?>
+
+        <!-- Logo dan Judul -->
     <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
       <img style="width: 200px;" src="../image/Desain tanpa judul.png" alt="Logo" />
-      <div style="color: black; font-size: 20px; font-family: Inter; font-weight: 500;">
-        Please Log In to Continue 
-      </div>
+      <div style="color: black; font-size: 20px; font-family: Inter; font-weight: 500;">Please Login to Continue</div>
     </div>
 
     <!-- Form Login -->

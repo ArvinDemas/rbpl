@@ -16,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['update_profile'])) {
         $nama = mysqli_real_escape_string($konek, $_POST['nama']);
         $email = mysqli_real_escape_string($konek, $_POST['email']);
-        $no_telp = mysqli_real_escape_string($konek, $_POST['no_telp']);
+        $no_telp = mysqli_real_escape_string($konek, $_POST['no_hp']);
 
-        $update_query = "UPDATE customer SET nama = ?, email = ?, NO_HP = ? WHERE id_customer = ?";
+        $update_query = "UPDATE customer SET nama = ?, email = ?, no_hp = ? WHERE id_customer = ?";
         $stmt = mysqli_prepare($konek, $update_query);
         mysqli_stmt_bind_param($stmt, "sssi", $nama, $email, $no_telp, $id_customer);
         mysqli_stmt_execute($stmt);
@@ -26,41 +26,98 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Update session variables
         $_SESSION['nama'] = $nama;
         $_SESSION['email'] = $email;
+        $_SESSION['update_success'] = "Profile updated successfully.";
 
         header("Location: myprofile.php");
         exit;
     }
 
-    // Handle profile picture upload
     if (isset($_POST['upload_picture']) && isset($_FILES['profile_picture'])) {
         $file = $_FILES['profile_picture'];
         $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
         if (in_array($file['type'], $allowed_types) && $file['error'] === 0) {
-            $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-            $new_filename = 'profile_' . $id_customer . '.' . $ext;
-            $upload_dir = 'image/';
-            $upload_path = $upload_dir . $new_filename;
+            // Directory to store uploaded images
+            $upload_dir = __DIR__ . '/../image/';
 
-            if (move_uploaded_file($file['tmp_name'], $upload_path)) {
-                // Update database with new image path
+            // Create upload directory if not exists
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir, 0755, true);
+            }
+
+            // Fetch current image filename from DB
+            $query = "SELECT gambar FROM customer WHERE id_customer = ?";
+            $stmt = mysqli_prepare($konek, $query);
+            mysqli_stmt_bind_param($stmt, "i", $id_customer);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            $row = mysqli_fetch_assoc($result);
+            $old_image = $row['gambar'];
+
+            // Delete old image file if exists and not default
+            if ($old_image && file_exists($upload_dir . $old_image)) {
+                unlink($upload_dir . $old_image);
+            }
+
+            // Generate unique filename
+            $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+            $new_filename = uniqid('profile_', true) . '.' . $ext;
+
+            // Move uploaded file to upload directory
+            $destination = $upload_dir . $new_filename;
+            if (move_uploaded_file($file['tmp_name'], $destination)) {
+                // Update DB with new filename
                 $update_img_query = "UPDATE customer SET gambar = ? WHERE id_customer = ?";
                 $stmt = mysqli_prepare($konek, $update_img_query);
                 mysqli_stmt_bind_param($stmt, "si", $new_filename, $id_customer);
-                mysqli_stmt_execute($stmt);
-
-                header("Location: myprofile.php");
-                exit;
+                if (mysqli_stmt_execute($stmt)) {
+                    $_SESSION['upload_success'] = "Profile picture uploaded successfully.";
+                    header("Location: myprofile.php");
+                    exit;
+                } else {
+                    $upload_error = "Failed to update image in database: " . mysqli_stmt_error($stmt);
+                }
             } else {
-                $upload_error = "Failed to upload image.";
+                $upload_error = "Failed to move uploaded file.";
             }
         } else {
             $upload_error = "Invalid file type or error uploading file.";
         }
     }
+
+    if (isset($_POST['delete_picture'])) {
+        // Directory to store uploaded images
+        $upload_dir = __DIR__ . '/../image/';
+
+        // Fetch current image filename from DB
+        $query = "SELECT gambar FROM customer WHERE id_customer = ?";
+        $stmt = mysqli_prepare($konek, $query);
+        mysqli_stmt_bind_param($stmt, "i", $id_customer);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
+        $old_image = $row['gambar'];
+
+        // // Delete old image file if exists and not default
+        // if ($old_image && file_exists($upload_dir . $old_image)) {
+        //     unlink($upload_dir . $old_image);
+        // }
+
+        // // Update DB to remove image filename
+        // $update_img_query = "UPDATE customer SET gambar = NULL WHERE id_customer = ?";
+        // $stmt = mysqli_prepare($konek, $update_img_query);
+        // mysqli_stmt_bind_param($stmt, "i", $id_customer);
+        // if (mysqli_stmt_execute($stmt)) {
+        //     $_SESSION['delete_success'] = "Profile picture deleted successfully.";
+        //     header("Location: myprofile.php");
+        //     exit;
+        // } else {
+        //     $upload_error = "Failed to delete image in database: " . mysqli_stmt_error($stmt);
+        // }
+    }
 }
 
 // Fetch customer data
-$query = "SELECT nama, email, NO_HP, gambar FROM customer WHERE id_customer = ?";
+$query = "SELECT nama, email, no_hp, gambar FROM customer WHERE id_customer = ?";
 $stmt = mysqli_prepare($konek, $query);
 if (!$stmt) {
     die("Prepare failed: " . mysqli_error($konek));
@@ -70,14 +127,12 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 $customer = mysqli_fetch_assoc($result);
 
-// Default image if none
-$profile_image = !empty($customer['gambar']) ? $customer['gambar'] : '../image/Desain tanpa judul.png';
-
-if (isset($customer['NO_HP'])) {
-    $customer['no_telp'] = $customer['NO_HP'];
+if (!empty($customer['gambar'])) {
+    $profile_image = '../image/' . htmlspecialchars($customer['gambar']);
 } else {
-    $customer['no_telp'] = '';
+    $profile_image = '../image/Desain tanpa judul.png';
 }
+
 
 ?>
 
@@ -129,8 +184,8 @@ if (isset($customer['NO_HP'])) {
           <input id="email" name="email" type="email" value="<?php echo htmlspecialchars($customer['email']); ?>" class="w-full px-4 py-3 border border-white rounded-lg text-white text-sm bg-transparent" required />
         </div>
         <div class="space-y-3 w-[520px]">
-          <label class="text-white text-sm" for="no_telp">No Telp</label>
-          <input id="no_telp" name="no_telp" type="text" value="<?php echo htmlspecialchars($customer['no_telp']); ?>" class="w-full px-4 py-3 border border-white rounded-lg text-white text-sm bg-transparent" required />
+          <label class="text-white text-sm" for="no_hp">No Telp</label>
+          <input id="no_hp" name="no_hp" type="text" value="<?php echo htmlspecialchars($customer['no_hp']); ?>" class="w-full px-4 py-3 border border-white rounded-lg text-white text-sm bg-transparent" required />
         </div>
         <button type="submit" name="update_profile" class="w-[520px] bg-[#DB323E] text-white py-3 rounded-lg text-base hover:bg-[#c4212f] transition">Update Profile</button>
       </form>
@@ -138,18 +193,86 @@ if (isset($customer['NO_HP'])) {
 
     <div class="flex flex-col items-center gap-6">
       <div class="w-64 h-64 bg-white rounded-full overflow-hidden">
-        <img src="<?php echo !empty($customer['gambar']) ? 'image/' . htmlspecialchars($customer['gambar']) : '../image/Desain tanpa judul.png'; ?>" alt="Profile Picture" class="w-full h-full object-cover" />
+        <img src="<?php echo $profile_image; ?>" alt="Profile Picture" class="w-full h-full object-cover" />
       </div>
-      <form method="post" action="myprofile.php" enctype="multipart/form-data" class="flex flex-col items-center gap-4 w-[214px]">
-        <input type="file" name="profile_picture" accept="image/*" required class="w-full" />
-        <button type="submit" name="upload_picture" class="w-full bg-[#DB323E] text-white py-3 rounded-lg text-base hover:bg-[#c4212f] transition">upload picture</button>
+      <form method="post" action="myprofile.php" enctype="multipart/form-data" class="flex flex-col items-center gap-4 w-[214px]" id="uploadForm">
+        <input type="file" name="profile_picture" accept="image/*" required id="profilePictureInput" class="hidden" />
+        <input type="hidden" name="upload_picture" value="1" />
+        <button type="button" id="uploadButton" class="w-full bg-[#DB323E] text-white py-3 rounded-lg text-base hover:bg-[#c4212f] transition">Upload Picture</button>
       </form>
+      <script>
+        document.getElementById('uploadButton').addEventListener('click', function() {
+          document.getElementById('profilePictureInput').click();
+        });
+        document.getElementById('profilePictureInput').addEventListener('change', function() {
+          if(this.files.length > 0) {
+            document.getElementById('uploadForm').submit();
+          }
+        });
+      </script>
+      <!-- <form method="post" action="myprofile.php" class="w-[214px]">
+        <button type="submit" name="delete_picture" class="w-full bg-gray-600 text-white py-3 rounded-lg text-base hover:bg-gray-700 transition">delete picture</button>
+      </form> -->
       <?php if (!empty($upload_error)): ?>
         <p class="text-red-500 mt-2"><?php echo htmlspecialchars($upload_error); ?></p>
       <?php endif; ?>
+
+<?php if (!empty($_SESSION['upload_success'])): ?>
+  <div id="uploadSuccessNotification" class="fixed top-20 right-4 bg-green-600 text-white px-6 py-3 rounded shadow-lg z-50">
+    <?php 
+      echo htmlspecialchars($_SESSION['upload_success']); 
+      unset($_SESSION['upload_success']);
+    ?>
+  </div>
+<?php endif; ?>
+
+<!-- <?php if (!empty($_SESSION['delete_success'])): ?>
+  <div id="deleteSuccessNotification" class="fixed top-32 right-4 bg-green-600 text-white px-6 py-3 rounded shadow-lg z-50">
+    <?php 
+      echo htmlspecialchars($_SESSION['delete_success']); 
+      unset($_SESSION['delete_success']);
+    ?>
+  </div>
+<?php endif; ?> -->
+
+<script>
+  // Auto-hide notifications after 3 seconds
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const uploadNotif = document.getElementById('uploadSuccessNotification');
+    if (uploadNotif) {
+      setTimeout(() => {
+        uploadNotif.style.display = 'none';
+      }, 3000);
+    }
+    const deleteNotif = document.getElementById('deleteSuccessNotification');
+    if (deleteNotif) {
+      setTimeout(() => {
+        deleteNotif.style.display = 'none';
+      }, 3000);
+    }
+  });
+</script>
     </div>
   </div>
 </section>
+
+<?php if (!empty($_SESSION['update_success'])): ?>
+  <div class="fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded shadow-lg z-50">
+    <?php 
+      echo htmlspecialchars($_SESSION['update_success']); 
+      unset($_SESSION['update_success']);
+    ?>
+  </div>
+<?php endif; ?>
+
+<?php if (!empty($_SESSION['upload_success'])): ?>
+  <div class="fixed top-20 right-4 bg-green-600 text-white px-6 py-3 rounded shadow-lg z-50">
+    <?php 
+      echo htmlspecialchars($_SESSION['upload_success']); 
+      unset($_SESSION['upload_success']);
+    ?>
+  </div>
+<?php endif; ?>
 
 <!-- Footer Section -->
 <footer class="bg-[#292929] py-20 px-4 md:px-16 flex flex-col items-center">
@@ -209,5 +332,7 @@ if (isset($customer['NO_HP'])) {
   </div>
 </footer>
 
+
+</script>
 </body>
 </html>

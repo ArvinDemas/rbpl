@@ -1,3 +1,23 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include "koneksi.php";
+
+    $fullname = mysqli_real_escape_string($konek, $_POST['fullname']);
+    $email = mysqli_real_escape_string($konek, $_POST['email']);
+    $message = mysqli_real_escape_string($konek, $_POST['message']);
+
+    if (!empty($fullname) && !empty($email) && !empty($message)) {
+        $sql = "INSERT INTO massage (fullname, email, message) VALUES ('$fullname', '$email', '$message')";
+        if (mysqli_query($konek, $sql)) {
+            $success_msg = "Message sent successfully.";
+        } else {
+            $error_msg = "Error: " . mysqli_error($konek);
+        }
+    } else {
+        $error_msg = "Please fill in all fields.";
+    }
+}
+?>
 <title>
    ChungBike Shop
   </title>
@@ -15,9 +35,9 @@
     <div class="w-full flex justify-between items-center gap-8">
     <img src="../image/Desain tanpa judul.png" alt="Logo" class="w-20 h-24" />
       <div class="flex gap-8 text-white text-sm font-semibold">
-        <a href="aboutus.html">About Us</a>
+        <a href="aboutus.html" class="hover:text-red-600 transition-colors">About Us</a>
         <a href="appointment.php">Appointment</a>
-        <a href="homepage.php">Home</a>
+        <a href="homepage.php" class="hover:text-red-600 transition-colors">Home</a>
       </div>
       <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="myprofile.php">
         <img src="../Image/Vector.png" alt="User Icon" class="w-6 h-6 rounded-full"> 
@@ -37,18 +57,23 @@
 <section class="bg-[#222222] py-20 px-4 md:px-16 flex flex-col items-center">
   <div class="w-full max-w-screen-xl grid md:grid-cols-2 gap-12">
     <!-- Contact Form -->
-    <form class="flex flex-col space-y-6">
+    <form class="flex flex-col space-y-6" method="POST" action="">
+      <?php if (!empty($success_msg)): ?>
+        <div class="text-green-500 font-semibold mb-4"><?= htmlspecialchars($success_msg) ?></div>
+      <?php elseif (!empty($error_msg)): ?>
+        <div class="text-red-500 font-semibold mb-4"><?= htmlspecialchars($error_msg) ?></div>
+      <?php endif; ?>
       <div>
         <label class="block text-white text-sm mb-2">Full Name</label>
-        <input type="text" class="w-full px-4 py-3 rounded-md bg-[#333333] text-white placeholder-white/60" placeholder="Your Name" required />
+        <input type="text" name="fullname" class="w-full px-4 py-3 rounded-md bg-[#333333] text-white placeholder-white/60" placeholder="Your Name" required />
       </div>
       <div>
         <label class="block text-white text-sm mb-2">Email Address</label>
-        <input type="email" class="w-full px-4 py-3 rounded-md bg-[#333333] text-white placeholder-white/60" placeholder="you@example.com" required />
+        <input type="email" name="email" class="w-full px-4 py-3 rounded-md bg-[#333333] text-white placeholder-white/60" placeholder="you@example.com" required />
       </div>
       <div>
         <label class="block text-white text-sm mb-2">Message</label>
-        <textarea class="w-full px-4 py-3 rounded-md bg-[#333333] text-white placeholder-white/60 h-32" placeholder="Write your message here..." required></textarea>
+        <textarea name="message" class="w-full px-4 py-3 rounded-md bg-[#333333] text-white placeholder-white/60 h-32" placeholder="Write your message here..." required></textarea>
       </div>
       <button type="submit" class="self-start bg-[#DB323E] text-white font-medium px-6 py-3 rounded-md hover:bg-[#c4212f] transition">Send Message</button>
     </form>
