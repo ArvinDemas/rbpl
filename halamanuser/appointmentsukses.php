@@ -54,22 +54,25 @@ $time = $booking ? $booking['appointment_time'] : '-';
     <div class="text-white text-xl font-semibold">
       <?php
         switch ($status) {
-          case 'confirmed':
-            echo "Order Confirmed";
-            break;
-          case 'rejected':
-            echo "Order Rejected";
-            break;
-          case 'in_queue':
-            echo "In Queue";
-            break;
-          case 'done':
-            echo "Service Completed";
-            break;
-          default:
-            echo "Awaiting Review";
-        }
-      ?>
+  case 'accepted':
+    echo "Accepted by Admin";
+    break;
+  case 'rejected':
+    echo "Order Rejected";
+    break;
+  case 'in_queue':
+    echo "In Queue";
+    break;
+  case 'in_progress':
+    echo "Being Serviced";
+    break;
+  case 'done':
+    echo "Service Completed";
+    break;
+  default:
+    echo "Awaiting Review";
+}
+?>
     </div>
     <div class="text-gray-400">Appointment Schedule: <?php echo htmlspecialchars($date); ?> at <?php echo htmlspecialchars($time); ?></div>
 
