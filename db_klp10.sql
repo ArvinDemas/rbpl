@@ -61,16 +61,20 @@ CREATE TABLE `customer` (
   `nama` char(20) NOT NULL,
   `email` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `no_hp` varchar(50) NOT NULL
+  `no_hp` varchar(50) NOT NULL,
+  `gambar` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id_customer`, `nama`, `email`, `password`, `no_hp`) VALUES
-(1, 'Arvin Demas Naryama', 'arpin@gmail.com', '12345678', '0'),
-(4, '', '', '$2y$10$seiDf4E.In9Ap', '0');
+INSERT INTO `customer` (`id_customer`, `nama`, `email`, `password`, `no_hp`, `gambar`) VALUES
+(1, 'Arvin Demas Naryama', 'arpin@gmail.com', '12345678', '0', 0x30),
+(4, '', '', '$2y$10$seiDf4E.In9Ap', '0', 0x30),
+(5, 'Rian', 'rian@gmail.com', '$2y$10$qwNa9zE61CooA94ix3jOZO1J6O2hCzAPWNRKr7W.vl9kErMhatt/G', '087846144412', 0x70726f66696c655f352e6a7067),
+(6, 'arvin demas naryama', 'arpin2@gmail.com', '$2y$10$A5SoTZtFaBEhOs/SAfy74.ra9wKDlWELeJmC0TRaVD/rf8YNzc.my', '087846144412', '');
+
 
 -- --------------------------------------------------------
 
