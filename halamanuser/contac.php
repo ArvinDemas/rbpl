@@ -10,18 +10,18 @@
             font-family: 'Roboto', sans-serif;
         }
   </style>
-  <section class="relative bg-black/60 bg-[url('https://placehold.co/1440x456')] bg-cover bg-center py-20 px-4 md:px-16 flex flex-col items-center gap-20">
+  <section class="relative bg-black/60 bg-[url('../image/8.png')] bg-cover bg-center py-20 px-4 md:px-16 flex flex-col items-center gap-20">
   <div class="w-full max-w-screen-xl flex flex-col items-center md:items-start gap-10">
     <div class="w-full flex justify-between items-center gap-8">
-      <img src="https://placehold.co/80x100" class="w-20 h-24" alt="Logo" />
+    <img src="../image/Desain tanpa judul.png" alt="Logo" class="w-20 h-24" />
       <div class="flex gap-8 text-white text-sm font-semibold">
         <a href="aboutus.html">About Us</a>
         <a href="appointment.php">Appointment</a>
         <a href="homepage.php">Home</a>
       </div>
-      <div class="bg-[#DB323E] rounded-md px-8 py-3 flex items-center">
-        <div class="w-6 h-6 bg-white"></div>
-      </div>
+      <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="myprofile.php">
+        <img src="../Image/Vector.png" alt="User Icon" class="w-6 h-6 rounded-full"> 
+      </a>
     </div>
 
     <div class="text-left w-full max-w-screen-md space-y-4">
@@ -60,15 +60,15 @@
 
         <div class="space-y-4">
           <div class="flex items-center gap-4 bg-[#DB323E] p-4 rounded-md">
-            <div class="w-8 h-8 bg-[#EDF2FD] rounded-full"></div>
+          <img src="../image/loc.png" alt="Location" class="w-8 h-8 rounded-full object-cover" />
             <span class="text-sm text-white/90">2464 Royal Ln. Mesa, New Jersey 45463</span>
           </div>
           <div class="flex items-center gap-4 bg-[#DB323E] p-4 rounded-md">
-            <div class="w-8 h-8 bg-white rounded-full"></div>
+          <img src="../image/call.png" alt="Phone Number" class="w-8 h-8 rounded-full object-cover" />
             <span class="text-sm text-white/90">(480) 555-0103</span>
           </div>
           <div class="flex items-center gap-4 bg-[#DB323E] p-4 rounded-md">
-            <div class="w-8 h-8 bg-white rounded-full"></div>
+          <img src="../image/mail.png" alt="Email" class="w-8 h-8 rounded-full object-cover" />
             <span class="text-sm text-white/90">hello@ChungBikeShop.com</span>
           </div>
         </div>
@@ -77,16 +77,16 @@
           <h4 class="text-white text-lg font-semibold mb-2">Follow Us on</h4>
           <div class="flex gap-4">
             <div class="w-10 h-10 bg-[#DB323E] rounded-md flex items-center justify-center">
-              <div class="w-5 h-4 bg-white"></div>
+            <img src="../Image/tw.png" alt="User Icon" class="w-6 h-6"> 
             </div>
             <div class="w-10 h-10 bg-[#DB323E] rounded-md flex items-center justify-center">
-              <div class="w-4 h-4 bg-white"></div>
+            <img src="../Image/ig.png" alt="User Icon" class="w-6 h-6"> 
             </div>
             <div class="w-10 h-10 bg-[#DB323E] rounded-md flex items-center justify-center">
-              <div class="w-5 h-5 bg-white"></div>
+            <img src="../Image/fb.png" alt="User Icon" class="w-6 h-6"> 
             </div>
             <div class="w-10 h-10 bg-[#DB323E] rounded-md flex items-center justify-center">
-              <div class="w-4 h-4 bg-white"></div>
+            <img src="../Image/in.png" alt="User Icon" class="w-6 h-6"> 
             </div>
           </div>
         </div>
@@ -99,10 +99,10 @@
 <!-- Footer Section -->
 <footer class="bg-[#292929] py-20 px-4 md:px-16 flex flex-col items-center">
   <div class="w-full max-w-screen-xl flex flex-col gap-12">
+  <img src="../image/Desain tanpa judul.png" alt="Logo" class="w-20 h-24" />
     <div class="grid md:grid-cols-4 gap-10">
       <!-- Address -->
       <div class="text-white text-sm space-y-3">
-        <div class="w-[63px] h-[27px] bg-white"></div>
         <p class="text-white/50">2464 Royal Ln. Mesa, New Jersey 45463</p>
         <p class="text-white/50">(480) 555-0103</p>
         <p class="text-white/50">hello@ChungBikeShop.com</p>

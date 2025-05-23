@@ -1,4 +1,3 @@
-<<<<<<< HEAD
   <?php
 session_start();
 include "koneksi.php";
@@ -7,9 +6,6 @@ if (!isset($_SESSION['id_customer'])) {
     die("Akses ditolak. Silakan login terlebih dahulu.");
 }
 ?>
-=======
-  <?php session_start();?>
->>>>>>> caa18187ebcead6718dfd9cb4d5d176dd8e74829
   <html>
   <head>
     <title>
@@ -54,10 +50,10 @@ if (!isset($_SESSION['id_customer'])) {
                 Chung Bike Shop
             </h2>
             <div class="mt-16 flex space-x-4 ml-[10%]">
-                <a href="#" class="bg-red-600 text-white px-6 py-4 rounded-lg hover:bg-red-700">
+                <a href="appointment.php" class="bg-red-600 text-white px-6 py-4 rounded-lg hover:bg-red-700">
                     Booking Sekarang!
                   </a>
-                  <a href="#" class="border-2 border-white text-white px-6 py-4 rounded-lg hover:bg-white hover:text-gray-900">
+                  <a href="servicedetail.php" class="border-2 border-white text-white px-6 py-4 rounded-lg hover:bg-white hover:text-gray-900">
                       Layanan kami
                   </a>
               </div>

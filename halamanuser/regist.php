@@ -1,6 +1,6 @@
-<div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; background: white; overflow: hidden;">
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 40px;">
-    
+<div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; background: white; overflow: auto;">
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 20px;">
+
     <!-- Logo dan Judul -->
     <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
       <img style="width: 200px;" src="../image/Desain tanpa judul.png" alt="Logo" />
@@ -47,7 +47,7 @@
       <!-- Link login -->
       <div style="text-align: center; font-size: 16px; font-family: Inter;">
         Sudah Punya Akun?
-        <a href="login.php" style="color: #5C73DB ; text-decoration: none;">Login</a>
+        <a href="login.php" style="color: #5C73DB; text-decoration: none;">Login</a>
       </div>
     </form>
   </div>

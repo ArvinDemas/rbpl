@@ -12,7 +12,7 @@
   </style>
 <section
   style="
-    background-image: url('https://placehold.co/1440x456');
+    background-image: url('../image/13.png');
     background-size: cover;
     background-position: center;
     background-color: rgba(0, 0, 0, 0.63);
@@ -35,35 +35,19 @@
       gap: 32px;
     "
   >
-    <img src="https://placehold.co/80x100" alt="Logo" style="width: 80px; height: 100px" />
+    <img src="../image/Desain tanpa judul.png " alt="Logo" style="width: 80px; height: 100px" />
 
     <!-- Nav Links -->
     <nav style="flex-grow: 1; display: flex; gap: 32px">
-      <a href="#" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">About Us</a>
-      <a href="#" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">Appointment</a>
-      <a href="#" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">Contact</a>
+      <a href="aboutus.html" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">About Us</a>
+      <a href="appointment.php" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">Appointment</a>
+      <a href="contac.php" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">Contact</a>
     </nav>
 
     <!-- Call to Action Button -->
-    <button
-      style="
-        background-color: #db323e;
-        padding: 15px 32px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-    >
-      <div
-        style="
-          width: 24px;
-          height: 24px;
-          background-color: white;
-          display: block;
-        "
-      ></div>
-    </button>
+    <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="myprofile.php">
+        <img src="../Image/Vector.png" alt="User Icon" class="w-6 h-6 rounded-full"> 
+    </a>
   </div>
 
   <!-- Headline Section -->
@@ -92,7 +76,7 @@
     </div>
 
     <div class="flex flex-col space-y-8">
-      <img class="w-full h-auto rounded-lg" src="https://placehold.co/1200x523" alt="Oil Change Image">
+      <img class="w-full h-auto rounded-lg" src="../image/14.png" alt="Oil Change Image">
 
       <p class="text-white text-base font-normal opacity-50 leading-6">
         An oil change is one of the most important services to keep your vehicle running smoothly and efficiently. At Chung Bike Shop, we specialize in providing quick, reliable oil change services using high-quality oils and filters. Our certified technicians ensure your engine stays protected, helping to extend its life, improve fuel efficiency, and prevent costly repairs. Whether you prefer conventional or synthetic oil, we’ll tailor the service to meet your car’s specific needs.
@@ -123,8 +107,8 @@
       </p>
 
       <div class="flex flex-col md:flex-row gap-4">
-        <img class="flex-1 rounded-lg" src="https://placehold.co/596x367" alt="Service image 1">
-        <img class="flex-1 rounded-lg" src="https://placehold.co/596x367" alt="Service image 2">
+        <img class="flex-1 rounded-lg" src="../image/15.png" alt="Service image 1">
+        <img class="flex-1 rounded-lg" src="../image/16.png" alt="Service image 2">
       </div>
     </div>
 
@@ -173,31 +157,63 @@
         </p>
       </div>
       <div class="flex-1 flex flex-col divide-y divide-[#EBEBEB]">
-        <div class="py-6">
-          <h4 class="text-white text-lg font-medium">What services do you offer?</h4>
-          <p class="text-white text-sm opacity-50 pt-2">We provide a wide range of services, including oil changes, brake repair, engine diagnostics, and more. Check our <span class="font-bold">Services Needed</span> section for details.</p>
-        </div>
-        <div class="py-6">
-          <h4 class="text-white text-lg font-medium">Do you use original parts for repairs?</h4>
-        </div>
-        <div class="py-6">
-          <h4 class="text-white text-lg font-medium">How long does a typical service take?</h4>
-        </div>
-        <div class="py-6">
-          <h4 class="text-white text-lg font-medium">Can I drop off my car and pick it up later?</h4>
-        </div>
-        <div class="py-6">
-          <h4 class="text-white text-lg font-medium">What forms of payment do you accept?</h4>
-        </div>
+       <details class="border-t border-[#EBEBEB] py-5">
+          <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
+            What services do you offer?
+            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+          </summary>
+          <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
+            We provide a wide range of services, including oil changes, brake repair, engine diagnostics, and more. Check our <span class="font-bold">Services Needed</span> section for details.
+          </p>
+        </details>
+
+        <details class="border-t border-[#EBEBEB] py-5">
+          <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
+            Do you use original parts for repairs?
+            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+          </summary>
+          <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
+            Yes, we use original parts to ensure the quality and longevity of repairs.
+          </p>
+        </details>
+
+        <details class="border-t border-[#EBEBEB] py-5">
+          <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
+            How long does a typical service take?
+            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+          </summary>
+          <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
+            A typical service usually takes between 1 to 3 hours depending on the type of repair or maintenance.
+          </p>
+        </details>
+
+        <details class="border-t border-[#EBEBEB] py-5">
+          <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
+            Can I drop off my car and pick it up later?
+            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+          </summary>
+          <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
+            Yes, you can drop off your vehicle and pick it up at a later time convenient for you.
+          </p>
+        </details>
+
+        <details class="border-t border-[#EBEBEB] py-5">
+          <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
+            What forms of payment do you accept?
+            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+          </summary>
+          <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
+            We accept cash, credit cards, and mobile payments.
+          </p>
+        </details>
       </div>
-    </div>
   </div>
 
   <!-- Call to Action Banner -->
     <div class="relative w-full flex flex-col items-center">
       <div class="absolute -left-36 top-40 w-[734px] h-[579px] bg-[#DB323E] rounded-xl z-0"></div>
       <div class="relative z-10 flex flex-col md:flex-row w-full max-w-6xl items-center justify-end gap-8 pt-20 pb-20">
-        <img src="https://placehold.co/639x305" alt="Call to Action" class="flex-1 h-auto rounded-lg">
+        <img src="../image/17.png" alt="Call to Action" class="flex-1 h-auto rounded-lg">
         <div class="w-full md:w-[529px] flex flex-col gap-8">
           <h2 class="text-4xl font-semibold text-white leading-tight">
             Let’s Get Your Vehicle in <span class="text-[#DB323E]">Top Shape!</span>
