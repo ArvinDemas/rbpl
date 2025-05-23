@@ -1,3 +1,31 @@
+<?php
+session_start();
+include "../halamanuser/koneksi.php";
+
+if (!isset($_SESSION['id_admin'])) {
+    die("Akses ditolak. Silakan login terlebih dahulu.");
+}
+// Ambil kategori unik
+$kategori_query = mysqli_query($konek, "SELECT DISTINCT kategori FROM sparepart");
+$kategori_array = [];
+while ($row = mysqli_fetch_assoc($kategori_query)) {
+    $kategori_array[] = $row['kategori'];
+}
+
+// Filter berdasarkan kategori jika ada
+$filter_kategori = isset($_GET['kategori']) ? $_GET['kategori'] : '';
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+
+$query = "SELECT * FROM sparepart WHERE 1";
+if ($filter_kategori) {
+    $query .= " AND kategori = '" . mysqli_real_escape_string($konek, $filter_kategori) . "'";
+}
+if ($search) {
+    $query .= " AND nama_sparepart LIKE '%" . mysqli_real_escape_string($konek, $search) . "%'";
+}
+
+$result = mysqli_query($konek, $query);
+?>
 <html>
  <head>
   <title>
@@ -26,16 +54,15 @@
       </div>
     </div>
     <nav class="flex flex-col gap-3 mt-6 w-full">
-      <a href="#" class="px-9 py-2 text-white text-base font-medium">Report</a>
-      <a href="#" class="px-9 py-2 text-white text-base font-medium">Request</a>
-      <a href="#" class="px-9 py-2 text-white text-base font-medium">Service Progres</a>
+      <a href="../halamanadmin/report.php" class="px-9 py-2 text-white text-base font-medium">Report</a>
+      <a href="../halamanadmin/request.php" class="px-9 py-2 text-white text-base font-medium">Request</a>
+      <a href="../halamanadmin/service.php" class="px-9 py-2 text-white text-base font-medium">Service Progres</a>
       <a href="#" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium">Inventory</a>
-      <a href="#" class="px-9 py-2 text-white text-base">Exit</a>
+      <a href="../halamanuser/logout.php" class="px-9 py-2 text-white text-base">Exit</a>
     </nav>
   </div>
 </aside>
 
-<!-- Admin Inventory Page -->
 <section class="min-h-screen ml-[256px] p-4 md:p-8 lg:p-12 bg-[#FAFAFA]">
   <header class="w-full h-20 bg-white flex items-center px-4 shadow-sm">
     <div class="flex items-center gap-4 text-gray-500 font-medium text-base">
@@ -45,51 +72,44 @@
     </div>
   </header>
 
-  <h1 class="text-black text-3xl font-semibold mt-8">Spare Part</h1>
+  <div class="flex justify-between items-center mt-8 mb-6">
+    <h1 class="text-black text-3xl font-semibold">Spare Part Inventory</h1>
+    <a href="tambahinventory.php" class="bg-[#4763E4] text-white px-4 py-2 rounded-md text-sm">+ Tambah Sparepart</a>
+  </div>
 
-  <div class="mt-6 w-full max-w-6xl mx-auto bg-white rounded-xl p-6 shadow-md">
-    <div class="flex justify-between items-center mb-4">
-      <p class="text-[#27272A] text-lg font-medium">List Spare Part</p>
-      <button class="bg-[#4763E4] text-white px-4 py-2 rounded-md text-sm">Add</button>
-    </div>
+  <!-- Filter dan Search -->
+  <div class="mb-6 flex flex-wrap gap-4 items-center">
+    <form method="GET" class="flex-1 flex gap-2">
+      <input type="text" name="search" placeholder="Cari spare part..." value="<?= htmlspecialchars($search) ?>" class="w-full px-4 py-2 border border-gray-300 rounded-md text-sm" />
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm">Search</button>
+    </form>
 
-    <div class="flex items-center gap-4 mb-6">
-      <input type="text" placeholder="Search Spare Part" class="flex-1 px-4 py-2 border border-[#4763E4]/50 rounded-md text-sm text-[#A1A1AA]" />
+  
+    <!-- Filter kategori -->
+    <div class="flex flex-wrap gap-2">
+      <a href="inventory.php" class="px-3 py-1 border rounded <?= $filter_kategori == '' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700' ?>">Semua</a>
+      <?php foreach ($kategori_array as $kat): ?>
+        <a href="?kategori=<?= urlencode($kat) ?>" class="px-3 py-1 border rounded <?= $filter_kategori == $kat ? 'bg-blue-600 text-white' : 'bg-white text-gray-700' ?>">
+          <?= htmlspecialchars($kat) ?>
+        </a>
+      <?php endforeach; ?>
     </div>
+  </div>
 
-    <div class="grid grid-cols-3 font-medium text-[#A1A1AA] text-sm border-b pb-3 mb-3">
-      <span>Category</span>
-      <span>Detail</span>
-      <span>Delete</span>
-    </div>
-
-    <!-- Inventory List Rows -->
-    <div class="flex flex-col gap-4">
-      <div class="grid grid-cols-3 items-center text-sm text-[#27272A]">
-        <span>Machines & Components</span>
-        <button class="text-xs bg-blue-100 rounded-md px-3 py-1">...</button>
-        <button class="text-xs text-red-500">Delete</button>
+  <!-- Produk Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+    <?php while ($sparepart = mysqli_fetch_assoc($result)): ?>
+      <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
+        <img src="<?= $sparepart['gambar_url'] ?: 'https://placehold.co/300x200?text=No+Image' ?>" alt="<?= $sparepart['nama_sparepart'] ?>" class="w-full h-40 object-cover rounded-md mb-3">
+        <h2 class="text-base font-semibold text-[#27272A] mb-1"><?= htmlspecialchars($sparepart['nama_sparepart']) ?></h2>
+        <p class="text-sm text-gray-500 mb-1">Kategori: <?= htmlspecialchars($sparepart['kategori']) ?></p>
+        <p class="text-sm text-gray-700 font-medium mb-1">Stok: <?= $sparepart['stok'] ?></p>
+        <p class="text-sm text-[#4763E4] font-bold">Rp<?= number_format($sparepart['harga'], 0, ',', '.') ?></p>
+        <div class="mt-3 flex gap-2">
+          <a href="edit_sparepart.php?id=<?= $sparepart['id_sparepart'] ?>" class="text-sm bg-yellow-400 px-3 py-1 rounded text-white hover:bg-yellow-500">Edit</a>
+          <a href="hapus_sparepart.php?id=<?= $sparepart['id_sparepart'] ?>" onclick="return confirm('Yakin ingin menghapus?')" class="text-sm bg-red-500 px-3 py-1 rounded text-white hover:bg-red-600">Hapus</a>
+        </div>
       </div>
-      <div class="grid grid-cols-3 items-center text-sm text-[#27272A]">
-        <span>Brake System</span>
-        <button class="text-xs bg-blue-100 rounded-md px-3 py-1">...</button>
-        <button class="text-xs text-red-500">Delete</button>
-      </div>
-      <div class="grid grid-cols-3 items-center text-sm text-[#27272A]">
-        <span>Electrical System</span>
-        <button class="text-xs bg-blue-100 rounded-md px-3 py-1">...</button>
-        <button class="text-xs text-red-500">Delete</button>
-      </div>
-      <div class="grid grid-cols-3 items-center text-sm text-[#27272A]">
-        <span>Transmission System</span>
-        <button class="text-xs bg-blue-100 rounded-md px-3 py-1">...</button>
-        <button class="text-xs text-red-500">Delete</button>
-      </div>
-      <div class="grid grid-cols-3 items-center text-sm text-[#27272A]">
-        <span>Tires</span>
-        <button class="text-xs bg-blue-100 rounded-md px-3 py-1">...</button>
-        <button class="text-xs text-red-500">Delete</button>
-      </div>
-    </div>
+    <?php endwhile; ?>
   </div>
 </section>

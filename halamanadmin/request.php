@@ -6,10 +6,27 @@ if (!isset($_SESSION['id_admin'])) {
     die("Akses ditolak. Silakan login terlebih dahulu.");
 }
 
+// Proses update status jika tombol Accept / Reject ditekan
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['id']) && isset($_POST['status'])) {
+    $id_booking = intval($_GET['id']);
+    $status_baru = $_POST['status'];
 
-$result = mysqli_query($konek, "SELECT * FROM booking ORDER BY created_at DESC");
+    // Validasi status yang boleh
+    if (in_array($status_baru, ['accepted', 'rejected'])) {
+        $stmt = mysqli_prepare($konek, "UPDATE booking SET status = ? WHERE id_booking = ?");
+        mysqli_stmt_bind_param($stmt, "si", $status_baru, $id_booking);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+
+    // Redirect supaya refresh halaman dan menghilangkan data POST (prevent double submit)
+    header("Location: request.php");
+    exit;
+}
+
+// Ambil booking dengan status pending untuk ditampilkan di bawah
+$result = mysqli_query($konek, "SELECT * FROM booking WHERE status = 'pending' ORDER BY appointment_date ASC");
 ?>
-
 <html>
 <head>
   <title>ChungBike Shop</title>
@@ -35,8 +52,8 @@ $result = mysqli_query($konek, "SELECT * FROM booking ORDER BY created_at DESC")
     </div>
     <nav class="flex flex-col gap-3 mt-6 w-full">
       <a href="#" class="px-9 py-2 text-white text-base font-medium">Report</a>
-      <a href="#" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium">Request</a>
-      <a href="#" class="px-9 py-2 text-white text-base">Service Progress</a>
+      <a href="../halamanadmin/request.php" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium">Request</a>
+      <a href="../halamanadmin/service.php" class="px-9 py-2 text-white text-base">Service Progress</a>
       <a href="#" class="px-9 py-2 text-white text-base">Inventory</a>
       <a href="logout.php" class="px-9 py-2 text-white text-base">Exit</a>
     </nav>
@@ -55,36 +72,35 @@ $result = mysqli_query($konek, "SELECT * FROM booking ORDER BY created_at DESC")
 
   <h1 class="text-black text-3xl font-semibold mt-8">Service Request</h1>
 
-  <div class="mt-8 w-full max-w-6xl mx-auto bg-white rounded-xl p-6 shadow-md">
-    <div class="grid grid-cols-6 font-medium text-[#A1A1AA] text-sm mb-6">
-      <span>Categories</span>
-      <span>Name</span>
-      <span class="text-[#575757]">Date & Time</span>
-      <span>Phone Number</span>
-      <span>Detail</span>
-      <span class="text-center">Actions</span>
-    </div>
-    <div class="flex flex-col gap-6">
-      <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-        <div class="grid grid-cols-6 items-center gap-4 text-sm">
-          <p class="text-[#222222]"><?= htmlspecialchars($row['service_category']) ?></p>
-          <p class="text-[#27272A]"><?= htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) ?></p>
-          <p class="text-[#27272A]"><?= htmlspecialchars($row['appointment_date']) ?> - <?= htmlspecialchars($row['appointment_time']) ?></p>
-          <p class="text-[#27272A]"><?= htmlspecialchars($row['phone_number']) ?></p>
-          <a href="requestedit.php?id=<?= $row['id_booking'] ?>" class="rounded-md px-2 py-1 bg-blue-100 text-center text-xs text-blue-800 font-semibold hover:underline">detail</a>
-
-          <div class="flex gap-2">
-            <form method="POST" action="../halamanadmin/requestedit.php">
-              
-              <button name="status" value="accepted" class="px-3 py-1 border border-[#5C73DB] text-[#5C73DB] rounded-md text-xs font-medium">Accept</button>
-              <button name="status" value="rejected" class="px-3 py-1 bg-[#DC2626] text-white rounded-md text-xs font-medium">Reject</button>
-            </form>
-          </div>
-        </div>
-        <div class="h-px bg-[#F4F4F5]"></div>
-      <?php endwhile; ?>
-    </div>
+<div class="mt-8 w-full max-w-6xl mx-auto bg-white rounded-xl p-6 shadow-md">
+  <div class="grid grid-cols-6 font-medium text-[#A1A1AA] text-sm mb-6">
+    <span>Categories</span>
+    <span>Name</span>
+    <span class="text-[#575757]">Date & Time</span>
+    <span>Phone Number</span>
+    <span>Detail</span>
+    <span class="text-center">Actions</span>
   </div>
+  <div class="flex flex-col gap-6">
+    <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+      <div class="grid grid-cols-6 items-center gap-4 text-sm">
+        <p class="text-[#222222]"><?= htmlspecialchars($row['service_category']) ?></p>
+        <p class="text-[#27272A]"><?= htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) ?></p>
+        <p class="text-[#27272A]"><?= htmlspecialchars($row['appointment_date']) ?> - <?= htmlspecialchars($row['appointment_time']) ?></p>
+        <p class="text-[#27272A]"><?= htmlspecialchars($row['phone_number']) ?></p>
+        <a href="requestedit.php?id=<?= $row['id_booking'] ?>" class="rounded-md px-2 py-1 bg-blue-100 text-center text-xs text-blue-800 font-semibold hover:underline">detail</a>
+
+        <div class="flex gap-2">
+          <form method="POST" action="request.php?id=<?= $row['id_booking'] ?>">
+            <button name="status" value="accepted" class="px-3 py-1 border border-[#5C73DB] text-[#5C73DB] rounded-md text-xs font-medium">Accept</button>
+            <button name="status" value="rejected" class="px-3 py-1 bg-[#DC2626] text-white rounded-md text-xs font-medium">Reject</button>
+          </form>
+        </div>
+      </div>
+      <div class="h-px bg-[#F4F4F5]"></div>
+    <?php endwhile; ?>
+  </div>
+</div>
 
   <!-- Pagination and Footer Bar -->
   <div class="w-full max-w-6xl mx-auto mt-6 flex flex-col gap-4">
