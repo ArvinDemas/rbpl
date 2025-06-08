@@ -27,7 +27,7 @@
     </div>
     <nav class="flex flex-col gap-3 mt-6 w-full">
       <a href="../halamanadmin/request.php" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium">Report</a>
-      <a href="#" class="px-9 py-2 text-white text-base font-medium">Request</a>
+      <a href="request.php" class="px-9 py-2 text-white text-base font-medium">Request</a>
       <a href="#" class="px-9 py-2 text-white text-base">Service Progres</a>
       <a href="#" class="px-9 py-2 text-white text-base">Inventory</a>
       <a href="#" class="px-9 py-2 text-white text-base">Exit</a>
