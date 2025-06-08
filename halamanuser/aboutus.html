@@ -5,61 +5,7 @@
   </title>
   <script src="https://cdn.tailwindcss.com">
   </script>
-  <script>
-  const counters = document.querySelectorAll('.counter');
-  let triggered = false;
-
-/**
- * Animates the counters on the page by incrementing their values until they reach the target value.
- * Each counter is identified by the 'counter' class and must have a 'data-target' attribute specifying the target number.
- * The animation is triggered only once when the specified section comes into view.
- */
-
-/**
- * Animates the counters on the page by incrementing their values until they reach the target value.
- * Each counter is identified by the 'counter' class and must have a 'data-target' attribute specifying the target number.
- * The animation is triggered only once when the specified section comes into view.
- */
-  function animateCounters() {
-    if (triggered) return;
-    triggered = true;
-
-    counters.forEach(counter => {
-      /**
-       * Updates the counter value by incrementing it until it reaches the target value.
-       * The increment value is calculated as the target value divided by 60.
-       * If the counter value is still less than the target value, the function will
-       * call itself using requestAnimationFrame to update the value again.
-       * When the counter value reaches the target value, the function will stop
-       * calling itself and set the counter value to the target value with localeString()
-       * formatting.
-       */
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-
-        const increment = target / 60;
-
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          requestAnimationFrame(updateCount);
-        } else {
-          counter.innerText = target.toLocaleString();
-        }
-      };
-
-      updateCount();
-    });
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) animateCounters();
-  }, { threshold: 0.5 });
-
-  const statSection = document.querySelector('section.bg-[#DB323E]');
-  if (statSection) observer.observe(statSection);
-</script>
-
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
   <style>
@@ -180,8 +126,8 @@
 </section>
 
 <!-- Stats Section -->
-<section class="bg-[#DB323E] py-10 px-4">
-  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 text-white">
+<section id="stats" class="bg-[#DB323E] py-10 px-4">
+    <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 text-white">
 
     <!-- Stat Box -->
     <div class="flex-1 flex flex-col items-center gap-2 text-center">
@@ -392,5 +338,44 @@
     </div>
   </div>
 </footer>
+<script>
+  // Ambil semua elemen dengan class "counter"
+  const counters = document.querySelectorAll('.counter');
+  let triggered = false;
 
+  // Fungsi animasi angka counter
+  function animateCounters() {
+    if (triggered) return; // agar hanya jalan sekali
+    triggered = true;
+
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'), 10);
+      let count = 0;
+      const increment = Math.ceil(target / 60); // bisa kamu sesuaikan kecepatannya
+
+      const updateCount = () => {
+        if (count < target) {
+          count += increment;
+          counter.innerText = count > target ? target.toLocaleString() : count.toLocaleString();
+          requestAnimationFrame(updateCount);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+
+      updateCount();
+    });
+  }
+
+  // Observer untuk jalankan animasi saat section terlihat di viewport
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      animateCounters();
+    }
+  }, { threshold: 0.5 });
+
+  // Gunakan ID atau data attribute agar tidak bentrok dengan karakter Tailwind
+  const statSection = document.getElementById('stats');
+  if (statSection) observer.observe(statSection);
+</script>
 </html>
