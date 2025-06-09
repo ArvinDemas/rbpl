@@ -92,7 +92,9 @@
         <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             What services do you offer?
-            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+            <div class="w-8 h-8 flex justify-center items-center">
+              <i class="fas fa-chevron-down text-black transition-transform duration-300"></i>
+            </div>
           </summary>
           <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
             We provide a wide range of services, including oil changes, brake repair, engine diagnostics, and more. Check our <span class="font-bold">Services Needed</span> section for details.
@@ -102,7 +104,9 @@
         <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             Do you use original parts for repairs?
-            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+            <div class="w-8 h-8 flex justify-center items-center">
+              <i class="fas fa-chevron-down text-black transition-transform duration-300"></i>
+            </div>
           </summary>
           <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
             Yes, we use original parts to ensure the quality and longevity of repairs.
@@ -112,7 +116,9 @@
         <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             How long does a typical service take?
-            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+            <div class="w-8 h-8 flex justify-center items-center">
+              <i class="fas fa-chevron-down text-black transition-transform duration-300"></i>
+            </div>
           </summary>
           <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
             A typical service usually takes between 1 to 3 hours depending on the type of repair or maintenance.
@@ -122,7 +128,9 @@
         <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             Can I drop off my car and pick it up later?
-            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+            <div class="w-8 h-8 flex justify-center items-center">
+              <i class="fas fa-chevron-down text-black transition-transform duration-300"></i>
+            </div>
           </summary>
           <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
             Yes, you can drop off your vehicle and pick it up at a later time convenient for you.
@@ -132,7 +140,9 @@
         <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             What forms of payment do you accept?
-            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+            <div class="w-8 h-8 flex justify-center items-center">
+              <i class="fas fa-chevron-down text-black transition-transform duration-300"></i>
+            </div>
           </summary>
           <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
             We accept cash, credit cards, and mobile payments.

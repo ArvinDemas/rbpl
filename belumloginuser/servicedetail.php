@@ -10,45 +10,19 @@
             font-family: 'Roboto', sans-serif;
         }
   </style>
-<section
-  style="
-    background-image: url('../image/13.png');
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 0.63);
-    background-blend-mode: overlay;
-    padding: 80px 64px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 93px;
-  "
->
-  <!-- Navigation / Header Row -->
-  <div
-    style="
-      max-width: 1200px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 32px;
-    "
-  >
-    <img src="../image/Desain tanpa judul.png " alt="Logo" style="width: 80px; height: 100px" />
-
-    <!-- Nav Links -->
-    <nav style="flex-grow: 1; display: flex; gap: 32px">
-      <a href="aboutus.html" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">About Us</a>
-      <a href="appointment.php" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">Appointment</a>
-      <a href="contac.php" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">Contact</a>
-    </nav>
-
-    <!-- Call to Action Button -->
-    <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="myprofile.php">
-        <img src="../Image/Vector.png" alt="User Icon" class="w-6 h-6 rounded-full"> 
-    </a>
-  </div>
+<section class="relative bg-black/60 bg-[url('../image/8.png')] bg-cover bg-center py-20 px-4 md:px-16 flex flex-col items-center gap-20">
+  <div class="w-full max-w-screen-xl flex flex-col items-center md:items-start gap-10">
+    <div class="w-full flex justify-between items-center gap-8">
+      <img src="../image/Desain tanpa judul.png" alt="Logo" class="w-20 h-24" />
+      <div class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-start md:flex-row gap-8 text-white text-sm font-semibold">
+        <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline md:mt-0 md:ml-4" href="aboutus.html">About Us</a>
+        <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline md:mt-0 md:ml-4" href="appointment.php">Appointment</a>
+        <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline md:mt-0 md:ml-4" href="homepage_before_login.html">Home</a>
+      </div>
+      <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="../halamanuser/login.php">
+          Login
+      </a>
+    </div>
 
   <!-- Headline Section -->
   <div
@@ -160,7 +134,9 @@
        <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             What services do you offer?
-            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+            <div class="w-8 h-8 flex justify-center items-center">
+              <i class="fas fa-chevron-down text-black transition-transform duration-300"></i>
+            </div>
           </summary>
           <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
             We provide a wide range of services, including oil changes, brake repair, engine diagnostics, and more. Check our <span class="font-bold">Services Needed</span> section for details.
@@ -170,7 +146,9 @@
         <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             Do you use original parts for repairs?
-            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+            <div class="w-8 h-8 flex justify-center items-center">
+              <i class="fas fa-chevron-down text-black transition-transform duration-300"></i>
+            </div>
           </summary>
           <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
             Yes, we use original parts to ensure the quality and longevity of repairs.
@@ -180,7 +158,9 @@
         <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             How long does a typical service take?
-            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+            <div class="w-8 h-8 flex justify-center items-center">
+              <i class="fas fa-chevron-down text-black transition-transform duration-300"></i>
+            </div>
           </summary>
           <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
             A typical service usually takes between 1 to 3 hours depending on the type of repair or maintenance.
@@ -190,7 +170,9 @@
         <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             Can I drop off my car and pick it up later?
-            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+            <div class="w-8 h-8 flex justify-center items-center">
+              <i class="fas fa-chevron-down text-black transition-transform duration-300"></i>
+            </div>
           </summary>
           <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
             Yes, you can drop off your vehicle and pick it up at a later time convenient for you.
@@ -200,7 +182,9 @@
         <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             What forms of payment do you accept?
-            <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
+            <div class="w-8 h-8 flex justify-center items-center">
+              <i class="fas fa-chevron-down text-black transition-transform duration-300"></i>
+            </div>
           </summary>
           <p class="pt-4 pb-6 text-white/50 text-base font-normal leading-6">
             We accept cash, credit cards, and mobile payments.

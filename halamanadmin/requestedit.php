@@ -43,6 +43,7 @@ if ($row = mysqli_fetch_assoc($result)) {
 </head>
 <body class="bg-[#222222] text-white">
   <section class="w-full py-20 px-4 md:px-16 flex flex-col items-center">
+    <button onclick="history.back()" type="button" class="mb-6 self-start bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md transition">Kembali</button>
     <form action="updateappointment.php?id=<?= $booking['id_booking'] ?>" method="POST" onsubmit="return confirmEdit();" class="w-full max-w-screen-xl bg-[#222222] p-6 md:p-10 rounded-xl flex flex-col gap-8">
       <input type="hidden" name="id_booking" value="<?= $booking['id_booking'] ?>">
       <h2 class="text-2xl font-semibold">Personal Information</h2>
