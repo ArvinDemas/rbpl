@@ -78,9 +78,8 @@ if ($row = mysqli_fetch_assoc($result)) {
       <h2 class="text-2xl font-semibold">Service Details</h2>
       <select name="service_category" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" required>
         <option disabled value="">Select Service Category</option>
-        <option value="Oil Change" <?= $booking['service_category'] == 'Oil Change' ? 'selected' : '' ?>>Oil Change</option>
-        <option value="Brake Inspection" <?= $booking['service_category'] == 'Brake Inspection' ? 'selected' : '' ?>>Brake Inspection</option>
-        <option value="Engine Tune-Up" <?= $booking['service_category'] == 'Engine Tune-Up' ? 'selected' : '' ?>>Engine Tune-Up</option>
+        <option value="Servis Ringan" <?= $booking['service_category'] == 'Servis Ringan' ? 'selected' : '' ?>>Servis Ringan</option>
+        <option value="Servis Berat" <?= $booking['service_category'] == 'Servis Berat' ? 'selected' : '' ?>>Servis Berat</option>
       </select>
       <textarea name="service_details" rows="6" class="p-4 rounded-md border border-[#EBEBEB] text-sm text-[#575757] w-full" required><?= htmlspecialchars($booking['service_details']) ?></textarea>
       <button type="submit" class="bg-[#DB323E] text-white px-8 py-3 rounded-md hover:bg-[#c4212f] transition w-fit self-center">Update Appointment</button>
