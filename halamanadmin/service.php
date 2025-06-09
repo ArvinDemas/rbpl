@@ -71,7 +71,11 @@ if (isset($_GET['id']) && isset($_GET['aksi'])) {
 $query = "SELECT * FROM booking ORDER BY created_at ASC";
 
 $result = mysqli_query($konek, $query);
+
+
+
 ?>
+
 <html>
  <head>
   <title>
@@ -186,12 +190,32 @@ $result = mysqli_query($konek, $query);
                    class="inline-block bg-green-500 text-white text-xs px-3 py-1 rounded hover:bg-green-600">
                   Tandai Selesai
                 </a>
-              <?php elseif ($row['status'] === 'done') : ?>
-                <a href="create_invoice.php?id=<?= $row['id_booking'] ?>" 
-                   class="inline-block bg-green-600 text-white text-xs px-3 py-1 rounded hover:bg-green-700">
-                  Membuat Nota
-                </a>
-              <?php else: ?>
+             <?php elseif ($row['status'] === 'done') : ?>
+  <?php
+    // Cek apakah sudah ada nota
+    $nota_query = "SELECT nota_id FROM nota WHERE id_booking = ?";
+    $stmt_nota = mysqli_prepare($konek, $nota_query);
+    mysqli_stmt_bind_param($stmt_nota, "i", $row['id_booking']);
+    mysqli_stmt_execute($stmt_nota);
+    $nota_result = mysqli_stmt_get_result($stmt_nota);
+    $nota = mysqli_fetch_assoc($nota_result);
+    mysqli_stmt_close($stmt_nota);
+  ?>
+
+  <?php if ($nota) : ?>
+    <!-- Jika nota sudah ada -->
+    <a href="invoice_sukses.php?nota_id=<?= $nota['nota_id'] ?>" 
+       class="inline-block bg-blue-600 text-white text-xs px-3 py-1 rounded hover:bg-blue-700">
+      Lihat Nota
+    </a>
+  <?php else : ?>
+    <!-- Jika belum ada nota -->
+    <a href="create_invoice.php?id=<?= $row['id_booking'] ?>" 
+       class="inline-block bg-green-600 text-white text-xs px-3 py-1 rounded hover:bg-green-700">
+      Membuat Nota
+    </a>
+  <?php endif; ?>
+<?php else: ?>
                 <button disabled class="px-3 py-1 bg-gray-400 text-white rounded text-xs cursor-not-allowed">Membuat Nota</button>
               <?php endif; ?>
             </td>
