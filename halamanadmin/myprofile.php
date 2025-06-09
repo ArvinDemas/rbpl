@@ -234,6 +234,8 @@ if ($is_admin) {
   </div>
 <?php endif; ?>
 
+</section>
+
 <!-- Footer Section -->
 <footer class="bg-[#292929] py-20 px-4 md:px-16 flex flex-col items-center">
   <div class="w-full max-w-screen-xl flex flex-col gap-12">
@@ -291,7 +293,6 @@ if ($is_admin) {
     </div>
   </div>
 </footer>
-
 
 </script>
 </body>

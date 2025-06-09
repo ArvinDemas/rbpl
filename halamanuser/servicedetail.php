@@ -10,45 +10,19 @@
             font-family: 'Roboto', sans-serif;
         }
   </style>
-<section
-  style="
-    background-image: url('../image/13.png');
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 0.63);
-    background-blend-mode: overlay;
-    padding: 80px 64px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 93px;
-  "
->
-  <!-- Navigation / Header Row -->
-  <div
-    style="
-      max-width: 1200px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 32px;
-    "
-  >
-    <img src="../image/Desain tanpa judul.png " alt="Logo" style="width: 80px; height: 100px" />
-
-    <!-- Nav Links -->
-    <nav style="flex-grow: 1; display: flex; gap: 32px">
-      <a href="aboutus.html" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">About Us</a>
-      <a href="appointment.php" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">Appointment</a>
-      <a href="contac.php" style="color: white; font-size: 16px; font-weight: 600; font-family: Inter">Contact</a>
-    </nav>
-
-    <!-- Call to Action Button -->
-    <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="myprofile.php">
-        <img src="../Image/Vector.png" alt="User Icon" class="w-6 h-6 rounded-full"> 
-    </a>
-  </div>
+<section class="relative bg-black/60 bg-[url('../image/8.png')] bg-cover bg-center py-20 px-4 md:px-16 flex flex-col items-center gap-20">
+  <div class="w-full max-w-screen-xl flex flex-col items-center md:items-start gap-10">
+    <div class="w-full flex justify-between items-center gap-8">
+      <img src="../image/Desain tanpa judul.png" alt="Logo" class="w-20 h-24" />
+      <div class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-start md:flex-row gap-8 text-white text-sm font-semibold">
+        <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline md:mt-0 md:ml-4" href="aboutus.html">About Us</a>
+        <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline md:mt-0 md:ml-4" href="appointment.php">Appointment</a>
+        <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline md:mt-0 md:ml-4" href="homepage.php">Home</a>
+      </div>
+       <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="myprofile.php">
+          <img src="../Image/Vector.png" alt="User Icon" class="w-6 h-6 rounded-full"> 
+        </a>
+    </div>
 
   <!-- Headline Section -->
   <div
@@ -157,7 +131,7 @@
         </p>
       </div>
       <div class="flex-1 flex flex-col divide-y divide-[#EBEBEB]">
-        <details class="border-t border-[#EBEBEB] py-5">
+       <details class="border-t border-[#EBEBEB] py-5">
           <summary class="flex justify-between items-center gap-6 cursor-pointer text-white text-lg font-medium list-none">
             What services do you offer?
             <div class="w-8 h-8 rotate-180 bg-[#EBEBEB] border border-[#EBEBEB]"></div>
@@ -207,7 +181,6 @@
           </p>
         </details>
       </div>
-    </div>
   </div>
 
   <!-- Call to Action Banner -->
