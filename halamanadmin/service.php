@@ -3,8 +3,9 @@ session_start();
 include "../halamanuser/koneksi.php";
 
 // Cek apakah admin sudah login
-if (!isset($_SESSION['id_admin'])) {
-    die("Akses ditolak. Silakan login terlebih dahulu.");
+if (!isset($_SESSION['id_admin']) && !isset($_SESSION['id_mekanik'])) {
+    header("Location: ../halamanuser/login.php");
+    exit;
 }
 
 // Proses perubahan status jika ada parameter aksi
