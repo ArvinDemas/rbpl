@@ -68,10 +68,10 @@ $result = mysqli_query($konek, "SELECT * FROM booking WHERE status = 'pending' O
     </div>
   </div>
 <nav class="flex flex-col gap-3 mt-6 w-full">
-  <a href="#" class="px-9 py-2 text-white text-base font-medium hover:bg-[#A1232B] hover:rounded-md">Report</a>
-  <a href="../halamanadmin/request.php" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium hover:bg-[#A1232B]">Request</a>
-  <a href="../halamanadmin/service.php" class="px-9 py-2 text-white text-base hover:bg-[#A1232B] hover:rounded-md">Service Progress</a>
-  <a href="#" class="px-9 py-2 text-white text-base hover:bg-[#A1232B] hover:rounded-md">Inventory</a>
+  <a href="report.php" class="px-9 py-2 text-white text-base font-medium hover:bg-[#A1232B] hover:rounded-md">Report</a>
+  <a href="request.php" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium hover:bg-[#A1232B]">Request</a>
+  <a href="service.php" class="px-9 py-2 text-white text-base hover:bg-[#A1232B] hover:rounded-md">Service Progress</a>
+  <a href="inventory.php" class="px-9 py-2 text-white text-base hover:bg-[#A1232B] hover:rounded-md">Inventory</a>
   <a href="logout.php" class="px-9 py-2 text-white text-base hover:bg-[#A1232B] hover:rounded-md">Exit</a>
 </nav>
   </div>

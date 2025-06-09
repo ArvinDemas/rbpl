@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['email'] = $row['email'];
         $_SESSION['spesialis'] = $row['spesialis'];
         $_SESSION['role'] = 'mekanik';
-        header("Location: ../halamanadmin/myprofile_mekanik.php");
+        header("Location: ../halamanadmin/service.php");
         exit;
     }
 

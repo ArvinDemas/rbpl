@@ -2,9 +2,44 @@
 session_start();
 include "../halamanuser/koneksi.php";
 
-// Cek apakah admin sudah login
-if (!isset($_SESSION['id_admin'])) {
-    die("Akses ditolak. Silakan login terlebih dahulu.");
+if (!isset($_SESSION['id_admin']) && !isset($_SESSION['id_mekanik'])) {
+    header("Location: ../halamanuser/login.php");
+    exit;
+}
+
+$admin_name = '';
+$admin_email = '';
+$admin_image = '../image/vector.png';
+
+// Fetch admin or mechanic details from database
+if (isset($_SESSION['id_admin'])) {
+    $id_admin = $_SESSION['id_admin'];
+    $admin_query = mysqli_prepare($konek, "SELECT nama, email, gambar FROM admin WHERE id_admin = ?");
+    mysqli_stmt_bind_param($admin_query, "i", $id_admin);
+    mysqli_stmt_execute($admin_query);
+    mysqli_stmt_bind_result($admin_query, $admin_name, $admin_email, $admin_image_db);
+    mysqli_stmt_fetch($admin_query);
+    mysqli_stmt_close($admin_query);
+
+    if (empty($admin_image_db)) {
+        $admin_image = "../image/vector.png";
+    } else {
+        $admin_image = "../image/" . $admin_image_db; // Adjust path as needed
+    }
+} elseif (isset($_SESSION['id_mekanik'])) {
+    $id_mekanik = $_SESSION['id_mekanik'];
+    $mekanik_query = mysqli_prepare($konek, "SELECT nama, email, gambar FROM mekanik WHERE id_mekanik = ?");
+    mysqli_stmt_bind_param($mekanik_query, "i", $id_mekanik);
+    mysqli_stmt_execute($mekanik_query);
+    mysqli_stmt_bind_result($mekanik_query, $admin_name, $admin_email, $admin_image_db);
+    mysqli_stmt_fetch($mekanik_query);
+    mysqli_stmt_close($mekanik_query);
+
+    if (empty($admin_image_db)) {
+        $admin_image = "../image/vector.png";
+    } else {
+        $admin_image = "../image/" . $admin_image_db; // Adjust path as needed
+    }
 }
 
 // Proses perubahan status jika ada parameter aksi
@@ -55,23 +90,25 @@ $result = mysqli_query($konek, $query);
 <!-- Admin Sidebar -->
 <aside class="fixed top-0 left-0 w-[256px] h-full bg-gradient-to-b from-[#DB323E] to-[#DB323E] flex flex-col items-start gap-8">
   <div class="w-full h-16 bg-[#1D0201] flex justify-center items-center">
-    <img src="https://placehold.co/143x32" alt="Logo" class="w-[143px] h-8" />
+    <img src="../image/Desain tanpa judul.png" alt="Logo" class="w-17 h-16" />
   </div>
   <div class="flex flex-col px-5 py-4 gap-4">
-    <div class="flex items-center gap-2">
-      <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full" />
-      <div class="text-white">
-        <p class="text-base font-medium">Tim Cook</p>
-        <p class="text-sm font-light">timcook@force.com</p>
-      </div>
+  <div class="flex items-center gap-2">
+<img src="<?= htmlspecialchars($admin_image) ?>" alt="User" class="w-16 h-16 rounded-full object-cover" />
+    <div class="text-white">
+      <p class="text-base font-medium"><a href="myprofile.php" class="hover:underline"><?= htmlspecialchars($admin_name) ?></a></p>
+      <p class="text-sm font-light"><?= htmlspecialchars($admin_email) ?></p>
     </div>
-    <nav class="flex flex-col gap-3 mt-6 w-full">
-      <a href="#" class="px-9 py-2 text-white text-base font-medium">Report</a>
-      <a href="../halamanadmin/request.php" class="px-9 py-2 text-white text-base font-medium">Request</a>
-      <a href="#" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium">Service Progres</a>
-      <a href="../halamanadmin/inventory.php" class="px-9 py-2 text-white text-base">Inventory</a>
-      <a href="#" class="px-9 py-2 text-white text-base">Exit</a>
-    </nav>
+  </div>
+<nav class="flex flex-col gap-3 mt-6 w-full">
+<?php if (isset($_SESSION['id_admin'])): ?>
+  <a href="report.php" class="px-9 py-2 text-white text-base font-medium hover:bg-[#A1232B] hover:rounded-md">Report</a>
+  <a href="request.php" class="px-9 py-2 text-white text-base font-medium hover:bg-[#A1232B] hover:rounded-md">Request</a>
+<?php endif; ?>
+  <a href="service.php" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium hover:bg-[#A1232B] hover:rounded-md">Service Progress</a>
+  <a href="inventory.php" class="px-9 py-2 text-white text-base hover:bg-[#A1232B] hover:rounded-md">Inventory</a>
+  <a href="logout.php" class="px-9 py-2 text-white text-base hover:bg-[#A1232B] hover:rounded-md">Exit</a>
+</nav>
   </div>
 </aside>
 
