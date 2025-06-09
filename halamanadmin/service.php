@@ -6,6 +6,18 @@ if (!isset($_SESSION['id_admin']) && !isset($_SESSION['id_mekanik'])) {
     header("Location: ../halamanuser/login.php");
     exit;
 }
+$selected_date = $_GET['date'] ?? '';
+$selected_date = trim($selected_date);
+
+// Validasi format tanggal YYYY-MM-DD
+if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $selected_date)) {
+    $selected_date = date('Y-m-d'); // default ke hari ini
+}
+
+// Validasi & fallback
+if (!$selected_date || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $selected_date)) {
+    $selected_date = date('Y-m-d');          // default : hari ini
+}
 
 $admin_name = '';
 $admin_email = '';
@@ -67,10 +79,18 @@ if (isset($_GET['id']) && isset($_GET['aksi'])) {
     exit;
 }
 
-// Ambil data booking dengan status accepted atau in_progress
-$query = "SELECT * FROM booking ORDER BY created_at ASC";
+/* --- DATA BOOKING --- */
+$selected_date = $_GET['date'] ?? date('Y-m-d'); // default: hari ini
 
-$result = mysqli_query($konek, $query);
+$query = "SELECT * FROM booking 
+          
+          wHERE appointment_date = ?
+          ORDER BY created_at ASC";
+
+$stmt = mysqli_prepare($konek, $query);
+mysqli_stmt_bind_param($stmt, "s", $selected_date);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
 
 
@@ -132,10 +152,21 @@ $result = mysqli_query($konek, $query);
 
   <div class="w-full max-w-7xl bg-white rounded-xl p-6 shadow-md">
     <!-- Optional Filter / Search -->
-    <div class="flex justify-between items-center mb-6">
-      <p class="text-[#27272A] text-base">Tanggal: <?= date("d - m - Y") ?></p>
-      <p class="text-[#4763E4] text-sm">Data Booking</p>
-    </div>
+    <!-- Filter Tanggal -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+  <form method="GET" class="flex items-center gap-2">
+      <label for="date" class="text-sm text-gray-700">Tampilkan tanggal:</label>
+      <input type="date" id="date" name="date"
+             value="<?= htmlspecialchars($selected_date) ?>"
+             class="border px-2 py-1 rounded text-sm">
+      <button type="submit"
+              class="bg-[#4763E4] text-white text-sm px-3 py-1 rounded hover:bg-blue-600">
+          Tampilkan
+      </button>
+  </form>
+
+  <p class="text-[#4763E4] text-sm">Data Booking (<?= date('d-m-Y', strtotime($selected_date)) ?>)</p>
+</div>
 
     <!-- Table -->
 <div class="overflow-x-auto">
