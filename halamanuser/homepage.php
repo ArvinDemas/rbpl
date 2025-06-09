@@ -425,10 +425,9 @@ if (!isset($_SESSION['id_customer'])) {
           </p>
         </div>
     
-        <!-- Google Maps Embed -->
         <div class="w-full overflow-hidden rounded-2xl shadow-lg">
-          <iframe
-    src="https://maps.app.goo.gl/6UnoENdgSfLS1JQeA"
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.948602964323!2d110.4080372!3d-7.7453241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5922732e248f%3A0x95f758112acc638b!2sChungbikeshop!5e0!3m2!1sid!2sid!4v1717826373992!5m2!1sid!2sid"
     width="100%"
     height="450"
     style="border:0;"
@@ -436,8 +435,7 @@ if (!isset($_SESSION['id_customer'])) {
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade">
   </iframe>
-
-        </div>
+</div>
     
       </div>
     </section>
