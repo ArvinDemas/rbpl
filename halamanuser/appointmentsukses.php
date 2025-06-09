@@ -102,6 +102,12 @@ if ($order_id !== 'N/A') {
       <h3 class="text-2xl font-semibold mb-2">Note</h3>
       <p class="text-lg">Please bring your motorcycle to the workshop on the scheduled date and time. Max delay allowed is 30 minutes.</p>
     </div>
+    <!-- Tombol kembali -->
+<div class="mt-8">
+  <a href="../halamanuser/homepage.php" class="inline-block bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition">
+    ← Kembali ke Homepage
+  </a>
+</div>
   </div>
 </section>
 
