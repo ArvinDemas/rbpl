@@ -14,7 +14,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 
 $id_sparepart = intval($_GET['id']);
 
-// Fetch spare part data
+// Fetch spare part data including gambar_url blob
 $query = "SELECT id_sparepart, nama_sparepart, kategori, stok, harga, gambar_url FROM sparepart WHERE id_sparepart = ?";
 $stmt = mysqli_prepare($konek, $query);
 mysqli_stmt_bind_param($stmt, "i", $id_sparepart);
@@ -26,14 +26,13 @@ if (!$sparepart) {
     die("Spare part tidak ditemukan.");
 }
 
-// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama_sparepart = $_POST['nama_sparepart'];
     $kategori = $_POST['kategori'];
     $stok = $_POST['stok'];
     $harga = $_POST['harga'];
 
-    $gambar_url = $sparepart['gambar_url']; // default to old image
+    $gambar_url = $sparepart['gambar_url']; // default to old image path
 
     if (isset($_FILES['gambar']) && $_FILES['gambar']['name']) {
         $file = $_FILES['gambar'];
@@ -46,19 +45,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 mkdir($upload_dir, 0755, true);
             }
 
-            // Hapus gambar lama jika bukan default
+            // Delete old image file if exists and not default
             $old_image_path = $upload_dir . basename($gambar_url);
             if ($gambar_url && $gambar_url !== 'default.png' && file_exists($old_image_path)) {
                 unlink($old_image_path);
             }
 
-            // Simpan gambar baru
+            // Generate unique filename
             $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
             $new_filename = uniqid('sparepart_', true) . '.' . $ext;
             $destination = $upload_dir . $new_filename;
 
             if (move_uploaded_file($file['tmp_name'], $destination)) {
-                $gambar_url = $new_filename; // hanya nama file disimpan
+                $gambar_url = $new_filename; // store only filename
             } else {
                 echo "Gagal mengupload gambar.";
             }
@@ -69,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $update_query = "UPDATE sparepart SET nama_sparepart = ?, kategori = ?, stok = ?, harga = ?, gambar_url = ? WHERE id_sparepart = ?";
     $stmt = mysqli_prepare($konek, $update_query);
-    mysqli_stmt_bind_param($stmt, "ssisii", $nama_sparepart, $kategori, $stok, $harga, $gambar_url, $id_sparepart);
+    mysqli_stmt_bind_param($stmt, "ssissi", $nama_sparepart, $kategori, $stok, $harga, $gambar_url, $id_sparepart);
 
     if (mysqli_stmt_execute($stmt)) {
         header("Location: inventory.php");
@@ -124,9 +123,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div>
                 <label class="block text-sm font-medium text-gray-700">Gambar</label>
                 <input type="file" name="gambar" accept="image/*" class="mt-1 block w-full text-sm" />
-                <?php if ($sparepart['gambar_url']): ?>
-                    <img src="uploads/<?= htmlspecialchars($sparepart['gambar_url']) ?>" alt="Current Image" class="mt-2 w-32 h-32 object-cover rounded" />
-                <?php endif; ?>
+            <?php if ($sparepart['gambar_url']): ?>
+        <img src="uploads/<?= htmlspecialchars($sparepart['gambar_url']) ?>" alt="Current Image" class="mt-2 w-32 h-32 object-cover rounded" />
+            <?php endif; ?>
             </div>
             <div class="flex gap-4 mt-6">
                 <a href="inventory.php" class="px-4 py-2 bg-gray-300 rounded-md text-sm">Kembali</a>
@@ -137,3 +136,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </section>
 </body>
 </html>
+</create_file>

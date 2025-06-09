@@ -16,14 +16,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Proses upload gambar
     $gambar_url = '';
-    if ($_FILES['gambar']['name']) {
-        $target_dir = "uploads/";
-        if (!file_exists($target_dir)) {
-            mkdir($target_dir, 0777, true);
-        }
-        $target_file = $target_dir . basename($_FILES["gambar"]["name"]);
-        if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file)) {
-            $gambar_url = $target_file;
+    if (isset($_FILES['gambar']) && $_FILES['gambar']['name']) {
+        $file = $_FILES['gambar'];
+        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+
+        if (in_array($file['type'], $allowed_types) && $file['error'] === 0) {
+            $upload_dir = __DIR__ . '/uploads/';
+
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir, 0755, true);
+            }
+
+            // Generate unique filename
+            $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+            $new_filename = uniqid('sparepart_', true) . '.' . $ext;
+            $destination = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($file['tmp_name'], $destination)) {
+                $gambar_url = $new_filename; // store only filename
+            } else {
+                echo "Gagal mengupload gambar.";
+            }
+        } else {
+            echo "Tipe file tidak diizinkan atau terjadi kesalahan saat upload.";
         }
     }
 

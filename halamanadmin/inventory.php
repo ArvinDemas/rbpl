@@ -115,13 +115,12 @@ $result = mysqli_query($konek, $query);
   </div>
 
   <!-- Filter dan Search -->
-  <div class="mb-6 flex flex-wrap gap-4 items-center">
-    <form method="GET" class="flex-1 flex gap-2">
-      <input type="text" name="search" placeholder="Cari spare part..." value="<?= htmlspecialchars($search) ?>" class="w-full px-4 py-2 border border-gray-300 rounded-md text-sm" />
+  <div class="mb-6 flex flex-col gap-4">
+    <form method="GET" class="flex gap-2">
+      <input type="text" name="search" placeholder="Cari spare part..." value="<?= htmlspecialchars($search) ?>" class="flex-1 px-4 py-2 border border-gray-300 rounded-md text-sm" />
       <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm">Search</button>
     </form>
 
-  
     <!-- Filter kategori -->
     <div class="flex flex-wrap gap-2">
       <a href="inventory.php" class="px-3 py-1 border rounded <?= $filter_kategori == '' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700' ?>">Semua</a>
@@ -137,7 +136,7 @@ $result = mysqli_query($konek, $query);
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
     <?php while ($sparepart = mysqli_fetch_assoc($result)): ?>
       <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="<?= $sparepart['gambar_url'] ? htmlspecialchars($sparepart['gambar_url']) : 'https://placehold.co/300x200?text=No+Image' ?>" alt="<?= htmlspecialchars($sparepart['nama_sparepart']) ?>" class="w-full h-40 object-cover rounded-md mb-3">
+        <img src="<?= $sparepart['gambar_url'] ? 'uploads/' . htmlspecialchars($sparepart['gambar_url']) : 'https://placehold.co/300x200?text=No+Image' ?>" alt="<?= htmlspecialchars($sparepart['nama_sparepart']) ?>" class="w-full h-40 object-cover rounded-md mb-3">
         <h2 class="text-base font-semibold text-[#27272A] mb-1"><?= htmlspecialchars($sparepart['nama_sparepart']) ?></h2>
         <p class="text-sm text-gray-500 mb-1">Kategori: <?= htmlspecialchars($sparepart['kategori']) ?></p>
         <p class="text-sm text-gray-700 font-medium mb-1">Stok: <?= $sparepart['stok'] ?></p>
