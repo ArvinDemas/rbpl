@@ -268,19 +268,20 @@
   </div>
 </section>
 
-<section class="relative h-[713px] w-full bg-black">
-  <img src="https://placehold.co/1440x713" alt="Chung Bike Shop Banner" class="absolute inset-0 object-cover w-full h-full opacity-40" />
-  <!-- Play Button Overlay -->
-  <div class="absolute inset-0 flex items-center justify-center">
-    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center">
-      <div class="w-12 h-12 bg-[#DB323E] clip-path-polygon"></div> <!-- You can replace this with an actual play icon -->
-    </div>
-  </div>
-  <!-- Text Overlay -->
-  <div class="absolute bottom-8 left-8 md:left-16 bg-[#DB323E] px-6 py-4">
-    <h2 class="text-white text-3xl md:text-5xl italic font-semibold">See Chung Bike Shop in Action</h2>
-  </div>
+<section class="relative w-full max-w-6xl mx-auto my-10 aspect-video cursor-pointer group" id="youtubeContainer">
+  <!-- Thumbnail -->
+  <img 
+    src="https://img.youtube.com/vi/rrMidvkWZHI/maxresdefault.jpg" 
+    alt="Chung Bike Shop Video" 
+    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80"
+  />
+
+ 
 </section>
+
+
+
+
 
  <footer class="bg-[#292929] px-8 py-20 text-white">
   <div class="max-w-screen-xl mx-auto flex flex-col gap-12">
@@ -373,5 +374,18 @@
   // Gunakan ID atau data attribute agar tidak bentrok dengan karakter Tailwind
   const statSection = document.getElementById('stats');
   if (statSection) observer.observe(statSection);
+const container = document.getElementById('youtubeContainer');
+
+  container.addEventListener('click', () => {
+    container.innerHTML = `
+      <iframe
+        class="w-full h-full absolute inset-0"
+        src="https://www.youtube.com/embed/rrMidvkWZHI?autoplay=1&rel=0"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>`;
+  });
+
 </script>
 </html>
