@@ -54,32 +54,53 @@ $total = $price * $qty;
 </head>
 <body class="bg-[#FAFAFA]">
 <div class="min-h-screen flex">
-  <aside class="w-64 bg-gradient-to-b from-[#DB323E] to-[#DB323E] text-white flex flex-col p-4">
-    <div class="flex items-center justify-center h-16 bg-[#1D0201] mb-8">
-      <img src="https://placehold.co/143x32" alt="Logo" class="h-8">
-    </div>
-    <div class="flex items-center gap-3 mb-6">
-      <img src="https://placehold.co/40x40" class="w-10 h-10 rounded-full">
-      <div>
-        <p class="font-medium">Tim Cook</p>
-        <p class="text-sm">timcook@force.com</p>
+<?php
+$admin_name = '';
+$admin_email = '';
+$admin_image = '../image/vector.png';
+
+$id_admin = $_SESSION['id_admin'];
+$admin_query = mysqli_prepare($konek, "SELECT nama, email, gambar FROM admin WHERE id_admin = ?");
+mysqli_stmt_bind_param($admin_query, "i", $id_admin);
+mysqli_stmt_execute($admin_query);
+mysqli_stmt_bind_result($admin_query, $admin_name, $admin_email, $admin_image_db);
+mysqli_stmt_fetch($admin_query);
+mysqli_stmt_close($admin_query);
+
+if (!empty($admin_image_db)) {
+    $admin_image = "../image/" . $admin_image_db;
+}
+?>
+
+<aside class="fixed top-0 left-0 w-[256px] h-full bg-gradient-to-b from-[#DB323E] to-[#DB323E] flex flex-col items-start gap-8">
+  <div class="w-full h-16 bg-[#1D0201] flex justify-center items-center">
+    <img src="../image/Desain tanpa judul.png" alt="Logo" class="w-17 h-16" />
+  </div>
+  <div class="flex flex-col px-5 py-4 gap-4">
+    <div class="flex items-center gap-2">
+      <img src="<?= htmlspecialchars($admin_image) ?>" alt="User" class="w-16 h-16 rounded-full object-cover" />
+      <div class="text-white">
+        <p class="text-base font-medium"><a href="myprofile.php" class="hover:underline"><?= htmlspecialchars($admin_name) ?></a></p>
+        <p class="text-sm font-light"><?= htmlspecialchars($admin_email) ?></p>
       </div>
     </div>
-    <nav class="flex flex-col gap-3">
-      <a href="#" class="px-4 py-2 rounded hover:bg-[#c4212f]">Report</a>
-      <a href="#" class="px-4 py-2 rounded hover:bg-[#c4212f]">Request</a>
-      <a href="#" class="px-4 py-2 bg-[#c4212f] rounded">Service Progress</a>
-      <a href="#" class="px-4 py-2 rounded hover:bg-[#c4212f]">Inventory</a>
-      <a href="logout.php" class="px-4 py-2 rounded hover:bg-[#c4212f]">Exit</a>
+    <nav class="flex flex-col gap-3 mt-6 w-full">
+      <a href="report.php" class="px-9 py-2 text-white text-base font-medium hover:bg-[#A1232B] hover:rounded-md">Report</a>
+      <a href="request.php" class="px-9 py-2 text-white text-base font-medium hover:bg-[#A1232B] hover:rounded-md">Request</a>
+      <a href="service.php" class="bg-[#DB323E] rounded-md px-9 py-2 text-white text-base font-medium hover:bg-[#A1232B] hover:rounded-md">Service Progress</a>
+      <a href="inventory.php" class="px-9 py-2 text-white text-base hover:bg-[#A1232B] hover:rounded-md">Inventory</a>
+      <a href="logout.php" class="px-9 py-2 text-white text-base hover:bg-[#A1232B] hover:rounded-md">Exit</a>
     </nav>
-  </aside>
+  </div>
+</aside>
 
-  <main class="flex-1 p-10">
+<main class="min-h-screen p-10 ml-[256px] flex-1">
+  <div class="w-full">
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-2xl font-semibold text-gray-700">Order ID: <?= htmlspecialchars($order_id) ?></h1>
     </div>
 
-    <div class="bg-white p-6 rounded-xl shadow mb-6">
+    <div class="bg-white p-6 rounded-xl shadow mb-6 w-full">
       <div class="flex justify-between mb-4">
         <h2 class="text-xl font-medium"><?= htmlspecialchars($service_name) ?></h2>
         <div class="text-right">

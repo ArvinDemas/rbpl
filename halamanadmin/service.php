@@ -120,7 +120,11 @@ $result = mysqli_stmt_get_result($stmt);
   <div class="flex items-center gap-2">
 <img src="<?= htmlspecialchars($admin_image) ?>" alt="User" class="w-16 h-16 rounded-full object-cover" />
     <div class="text-white">
-      <p class="text-base font-medium"><a href="myprofile.php" class="hover:underline"><?= htmlspecialchars($admin_name) ?></a></p>
+<?php if (isset($_SESSION['id_mekanik'])): ?>
+<p class="text-base font-medium"><a href="myprofile_mekanik.php" class="hover:underline"><?= htmlspecialchars($admin_name) ?></a></p>
+<?php else: ?>
+<p class="text-base font-medium"><a href="myprofile.php" class="hover:underline"><?= htmlspecialchars($admin_name) ?></a></p>
+<?php endif; ?>
       <p class="text-sm font-light"><?= htmlspecialchars($admin_email) ?></p>
     </div>
   </div>
@@ -179,7 +183,9 @@ $result = mysqli_stmt_get_result($stmt);
         <th class="px-4 py-3">Waktu</th>
         <th class="px-4 py-3">Detail</th>
         <th class="px-4 py-3">Status</th>
+<?php if (isset($_SESSION['id_admin'])): ?>
         <th class="px-4 py-3 text-center">Aksi</th>
+<?php endif; ?>
       </tr>
     </thead>
     <tbody>
@@ -210,6 +216,7 @@ $result = mysqli_stmt_get_result($stmt);
   </select>
 </form>
             </td>
+<?php if (isset($_SESSION['id_admin'])): ?>
             <td class="px-4 py-3 text-center space-x-2">
               <?php if ($row['status'] === 'accepted') : ?>
                 <a href="?id=<?= $row['id_booking'] ?>&aksi=mulai"
@@ -250,6 +257,7 @@ $result = mysqli_stmt_get_result($stmt);
                 <button disabled class="px-3 py-1 bg-gray-400 text-white rounded text-xs cursor-not-allowed">Membuat Nota</button>
               <?php endif; ?>
             </td>
+<?php endif; ?>
           </tr>
         <?php endwhile; ?>
       <?php else : ?>

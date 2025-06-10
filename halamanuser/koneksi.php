@@ -2,7 +2,7 @@
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'db_klp10';
+$database = 'u524227222_db_klp10';
 
 //membuat koneks
 	$konek = mysqli_connect($hostname, $username, $password, $database);

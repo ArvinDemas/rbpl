@@ -128,16 +128,6 @@ if ($count_query) {
     </div>
   </div>
 
-  <!-- Left and Right Report Cards -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 max-w-6xl mx-auto">
-    <div class="bg-white rounded-xl p-8 shadow-md flex flex-col gap-6">
-      <!-- ...left card content... -->
-    </div>
-
-    <div class="bg-white rounded-xl p-8 shadow-md flex flex-col gap-6">
-      <!-- ...right card content... -->
-    </div>
-  </div>
 
   <script>
     const yearDisplay = document.getElementById('year-display');

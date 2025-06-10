@@ -111,30 +111,61 @@ if ($order_id !== 'N/A') {
   </div>
 </section>
 
-<footer class="bg-[#292929] text-white mt-20 py-12">
-  <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-    <div>
-      <img src="https://placehold.co/80x100" alt="Logo" class="mb-4">
-      <p class="opacity-50">2464 Royal Ln. Mesa, New Jersey 45463</p>
-      <p class="opacity-50">(480) 555-0103</p>
-      <p class="opacity-50">hello@ChungBikeShop.com</p>
-      <p class="opacity-50">www.ChungBikeShop.com</p>
-    </div>
-    <div>
-      <h4 class="font-bold text-lg mb-3">Opening Hours</h4>
-      <p class="opacity-50">Mon-Fri: 08.00 - 20.00</p>
-      <p class="opacity-50">Sat-Sun: 10.00 - 16.00</p>
-    </div>
-    <div>
-      <h4 class="font-bold text-lg mb-3">Quick Links</h4>
-      <p class="opacity-50">About Us<br>Why with Us<br>Our Services<br>Appointment<br>Blog<br>FAQ</p>
-    </div>
-    <div>
-      <h4 class="font-bold text-lg mb-3">Subscribe</h4>
-      <p class="opacity-50 mb-2">Receive exclusive promotions and news in your inbox.</p>
-      <input type="email" placeholder="Email Address" class="w-full p-2 mb-2 rounded-md bg-[#444] text-white placeholder-gray-400">
-      <button class="bg-[#DB323E] px-4 py-2 rounded-md">Submit</button>
-    </div>
-  </div>
-  <div class="text-center text-sm opacity-50 mt-8">Copyright © 2024 ChungBikeShop. All rights reserved.</div>
-</footer>
+<footer class="bg-zinc-800 text-white px-4 py-20">
+      <div class="max-w-screen-xl mx-auto flex flex-col gap-16">
+    
+        <!-- Konten Utama -->
+        <div class="flex flex-col lg:flex-row justify-between gap-12">
+          
+          <!-- Logo & Kontak -->
+          <div class="flex flex-col gap-4 max-w-xs">
+            <img class="w-20 h-24" src="../image/desain tanpa judul.png" alt="Logo" />
+            <p class="text-base opacity-50">2464 Royal Ln. Mesa, New Jersey 45463</p>
+            <p class="text-base opacity-50">(480) 555-0103</p>
+            <p class="text-base opacity-50">hello@ChungBikeShop.com</p>
+            <p class="text-base opacity-50">www.ChungBikeShop.com</p>
+          </div>
+    
+          <!-- Jam Operasional -->
+          <div class="flex flex-col gap-3">
+            <h3 class="text-2xl font-medium">Jam Operasional</h3>
+            <p class="text-lg opacity-50">Mon–Fri: 08.00 – 20.00</p>
+            <p class="text-lg opacity-50">Sat–Sun: 10.00 – 16.00</p>
+          </div>
+    
+          <!-- Quick Links -->
+          <div class="flex flex-col gap-4">
+            <h3 class="text-2xl font-medium">Quick Links</h3>
+            <ul class="text-base opacity-50 space-y-1">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Why with Us</a></li>
+              <li><a href="#">Our Services</a></li>
+              <li><a href="#">Appointment</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+    
+          <!-- Newsletter -->
+          <div class="flex flex-col gap-6 max-w-md">
+            <h3 class="text-2xl font-medium">Subscribe to Our Newsletter</h3>
+            <p class="text-lg opacity-50">Sign up for our newsletter to receive exclusive promotions, news, and tips straight to your inbox.</p>
+            <div class="flex flex-col gap-4 w-full">
+              <input type="email" placeholder="Email Address" class="w-full p-3 rounded-lg text-white bg-transparent border border-white opacity-80 placeholder-white" />
+              <button class="px-8 py-3 bg-rose-600 rounded-lg hover:bg-rose-700 text-sm font-medium">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Garis Bawah & Copyright -->
+        <div class="flex flex-col items-center gap-6">
+          <div class="w-full h-px bg-white opacity-20"></div>
+          <p class="text-lg opacity-50 text-center">
+            © 2024 ChungBikeShop. All rights reserved.
+          </p>
+        </div>
+        
+      </div>
+    </footer>

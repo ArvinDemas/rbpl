@@ -84,7 +84,11 @@ $result = mysqli_query($konek, $query);
   <div class="flex items-center gap-2">
 <img src="<?= htmlspecialchars($admin_image) ?>" alt="User" class="w-16 h-16 rounded-full object-cover" />
     <div class="text-white">
-      <p class="text-base font-medium"><a href="myprofile.php" class="hover:underline"><?= htmlspecialchars($admin_name) ?></a></p>
+<?php if (isset($_SESSION['id_mekanik'])): ?>
+<p class="text-base font-medium"><a href="myprofile_mekanik.php" class="hover:underline"><?= htmlspecialchars($admin_name) ?></a></p>
+<?php else: ?>
+<p class="text-base font-medium"><a href="myprofile.php" class="hover:underline"><?= htmlspecialchars($admin_name) ?></a></p>
+<?php endif; ?>
       <p class="text-sm font-light"><?= htmlspecialchars($admin_email) ?></p>
     </div>
   </div>

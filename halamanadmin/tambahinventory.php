@@ -2,8 +2,7 @@
 session_start();
 include "../halamanuser/koneksi.php";
 
-// Cek apakah admin sudah login
-if (!isset($_SESSION['id_admin'])) {
+if (!isset($_SESSION['id_admin']) && !isset($_SESSION['id_mekanik'])) {
     die("Akses ditolak. Silakan login terlebih dahulu.");
 }
 

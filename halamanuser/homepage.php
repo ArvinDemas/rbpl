@@ -102,7 +102,7 @@ if (!isset($_SESSION['id_customer'])) {
           </div>
     
           <!-- Card 2 -->
-          <div class="relative w-full h-[455px] rounded-2xl overflow-hidden p-6 flex flex-col justify-between" style="background-image: url('../image/2.png'); background-size: cover; background-position: center;">
+<div class="relative w-full h-[455px] rounded-2xl overflow-hidden p-6 flex flex-col justify-between" style="background-image: url('../image/2.png'); background-size: 100% auto; background-position: center; background-repeat: no-repeat;">
               <div class="z-10 flex flex-col gap-6 justify-end h-full">
               <div class="text-white text-base font-medium">02</div>
               <div class="w-16 h-16">
@@ -352,8 +352,8 @@ if (!isset($_SESSION['id_customer'])) {
           
           <!-- Card 1 -->
           <div class="bg-stone-50 text-neutral-800 px-8 py-12 rounded-2xl flex flex-col items-start gap-4">
-            <img src="https://placehold.co/116x116" alt="Albert Flores" class="w-28 h-28 rounded-md">
-            <h3 class="text-2xl font-medium">Albert Flores</h3>
+<img src="../image/S.jpg" alt="Albert Flores" class="w-28 h-28 rounded-md object-cover">
+            <h3 class="text-2xl font-medium">Sulthon</h3>
             <p class="text-base opacity-70 leading-relaxed">
             Selama bertahun-tahun, saya mempercayakan sepeda motor saya kepada Chung Bike Shop, dan mereka tidak pernah mengecewakan saya...
             </p>
@@ -368,8 +368,8 @@ if (!isset($_SESSION['id_customer'])) {
     
           <!-- Card 2 -->
           <div class="bg-stone-50 text-neutral-800 px-8 py-12 rounded-2xl flex flex-col items-start gap-4">
-            <img src="https://placehold.co/116x116" alt="Robert Fox" class="w-28 h-28 rounded-md">
-            <h3 class="text-2xl font-medium">Robert Fox</h3>
+<img src="../image/K.jpg" alt="Robert Fox" class="w-28 h-28 rounded-md">
+            <h3 class="text-2xl font-medium">Kiel</h3>
             <p class="text-base opacity-70 leading-relaxed">
             Ketika saya tiba-tiba menghadapi masalah dengan sepeda motor saya, Chung Bike Shop berhasil mengatur janji temu bagi saya...
             </p>
@@ -384,8 +384,8 @@ if (!isset($_SESSION['id_customer'])) {
     
           <!-- Card 3 -->
           <div class="bg-stone-50 text-neutral-800 px-8 py-12 rounded-2xl flex flex-col items-start gap-4">
-            <img src="https://placehold.co/116x116" alt="Eleanor Pena" class="w-28 h-28 rounded-md">
-            <h3 class="text-2xl font-medium">Eleanor Pena</h3>
+<img src="../image/An.jpg" alt="Eleanor Pena" class="w-28 h-28 rounded-md object-cover">
+            <h3 class="text-2xl font-medium">Adriano</h3>
             <p class="text-base opacity-70 leading-relaxed">
             Saya mengalami masalah mendesak dengan kendaraan saya dan beruntung bisa mendapatkan janji temu di hari yang sama...
             </p>
