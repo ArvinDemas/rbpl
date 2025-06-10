@@ -17,7 +17,7 @@
       <div class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-start md:flex-row gap-8 text-white text-sm font-semibold">
         <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline md:mt-0 md:ml-4" href="aboutus.html">About Us</a>
         <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline md:mt-0 md:ml-4" href="appointment.php">Appointment</a>
-        <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline md:mt-0 md:ml-4" href="homepage_before_login.html">Home</a>
+        <a class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline md:mt-0 md:ml-4" href="index.html">Home</a>
       </div>
       <a class="flex items-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-red-500 rounded-lg md:mt-0 md:ml-auto hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:shadow-outline" href="../halamanuser/login.php">
           Login
