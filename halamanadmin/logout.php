@@ -4,4 +4,5 @@ session_start();
 session_unset();
 session_destroy();
 
-header("location: ../belumloginuser/index.html");
+// Redirect to hosted landing page
+header("location: https://rbpl10.xyz/");
